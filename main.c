@@ -4,12 +4,14 @@
 #include "core/BLE_core_memory.h"
 #include "core/BLE_core_math.h"
 #include "modules/tools/BLE_module_tools.h"
+#include "modules/mesh/BLE_module_mesh.h"
 #include "plugins/render/BLE_render_api.h"
 
 // External module declarations
 extern BLE_Module *BLE_module_get_ble_core(void);
 extern BLE_Module *BLE_module_get_ble_tools(void);
 extern BLE_Module *BLE_module_get_ble_render(void);
+extern BLE_Module *BLE_module_get_ble_mesh(void);
 
 // External engine declarations
 extern BLE_RenderEngine *BLE_render_engine_get_blender_render(void);
@@ -32,6 +34,7 @@ int main() {
     // 2. Register Modules
     BLE_module_register(reg, BLE_module_get_ble_core());
     BLE_module_register(reg, BLE_module_get_ble_tools());
+    BLE_module_register(reg, BLE_module_get_ble_mesh());
     BLE_module_register(reg, BLE_module_get_ble_render());
     
     // 3. Initialize Modules

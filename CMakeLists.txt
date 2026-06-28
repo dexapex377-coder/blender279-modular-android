@@ -107,13 +107,8 @@ set(GPU_OPENGL_SRCS
     core/gpu/opengl/gl_vertex_buffer.cc
 )
 
-# Modules
-set(MODULE_SRCS
-    modules/tools/BLE_module_tools.c
-    modules/tools/mesh/BLE_tool_mesh_select.c
-    modules/tools/sculpt/BLE_tool_sculpt_brush.c
-    modules/tools/animation/BLE_tool_animation_timeline.c
-)
+# Mesh module
+add_subdirectory(modules/mesh)
 
 # Render plugin
 set(RENDER_SRCS
