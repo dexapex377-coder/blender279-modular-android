@@ -1,0 +1,193 @@
+name: Blender 2.79 Modular Android CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+env:
+  ANDROID_NDK_VERSION: r27c
+  ANDROID_API_LEVEL: 24
+  CMAKE_VERSION: 3.22.1
+
+jobs:
+  build-linux:
+    name: Build Linux (x86_64)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake gcc g++ make libgl1-mesa-dev libglu1-mesa-dev
+      
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+      
+      - name: Build
+        run: cmake --build build --config Release --parallel $(nproc)
+      
+      - name: Test
+        run: ./build/blender_mod
+      
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: blender279-linux
+          path: build/blender_mod
+          retention-days: 7
+
+  build-android:
+    name: Build Android (arm64-v8a, x86_64)
+    runs-on: ubuntu-latest
+    needs: build-linux
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Setup Android NDK
+        uses: android-actions/setup-android@v3
+        with:
+          ndk-version: ${{ env.ANDROID_NDK_VERSION }}
+      
+      - name: Cache CMake
+        uses: actions/cache@v4
+        with:
+          path: ~/.cmake
+          key: cmake-${{ runner.os }}-${{ hashFiles('**/CMakeLists.txt') }}
+      
+      - name: Configure arm64-v8a
+        run: |
+          cmake -B build_arm64 \
+            -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
+            -DANDROID_ABI=arm64-v8a \
+            -DANDROID_PLATFORM=android-${{ env.ANDROID_API_LEVEL }} \
+            -DANDROID_STL=c++_shared \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DBLENDER_BUILD_ANDROID=ON
+      
+      - name: Build arm64-v8a
+        run: cmake --build build_arm64 --config Release --parallel $(nproc)
+      
+      - name: Configure x86_64
+        run: |
+          cmake -B build_x86_64 \
+            -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
+            -DANDROID_ABI=x86_64 \
+            -DANDROID_PLATFORM=android-${{ env.ANDROID_API_LEVEL }} \
+            -DANDROID_STL=c++_shared \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DBLENDER_BUILD_ANDROID=ON
+      
+      - name: Build x86_64
+        run: cmake --build build_x86_64 --config Release --parallel $(nproc)
+      
+      - name: Package APK
+        run: |
+          # Create APK structure
+          mkdir -p apk/arm64-v8a apk/x86_64
+          cp build_arm64/libblender279_modular.so apk/arm64-v8a/
+          cp build_x86_64/libblender279_modular.so apk/x86_64/
+          
+          # Create minimal APK using gradle
+          cd android && ./gradlew assembleRelease
+      
+      - name: Upload Android artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: blender279-android
+          path: |
+            build_arm64/libblender279_modular.so
+            build_x86_64/libblender279_modular.so
+          retention-days: 30
+      
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blender279-apk
+          path: android/app/build/outputs/apk/release/*.apk
+          retention-days: 30
+
+  build-android-debug:
+    name: Build Android Debug
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Android NDK
+        uses: android-actions/setup-android@v3
+        with:
+          ndk-version: ${{ env.ANDROID_NDK_VERSION }}
+      
+      - name: Configure arm64-v8a (Debug)
+        run: |
+          cmake -B build_debug \
+            -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
+            -DANDROID_ABI=arm64-v8a \
+            -DANDROID_PLATFORM=android-${{ env.ANDROID_API_LEVEL }} \
+            -DANDROID_STL=c++_shared \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DBLENDER_BUILD_ANDROID=ON
+      
+      - name: Build Debug
+        run: cmake --build build_debug --config Debug --parallel $(nproc)
+      
+      - name: Upload Debug artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: blender279-android-debug
+          path: build_debug/libblender279_modular.so
+          retention-days: 7
+
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: [build-linux, build-android]
+    if: github.event_name == 'release' && github.event.action == 'published'
+    steps:
+      - name: Download Linux build
+        uses: actions/download-artifact@v4
+        with:
+          name: blender279-linux
+          path: release/
+      
+      - name: Download Android builds
+        uses: actions/download-artifact@v4
+        with:
+          name: blender279-android
+          path: release/
+      
+      - name: Download APK
+        uses: actions/download-artifact@v4
+        with:
+          name: blender279-apk
+          path: release/
+      
+      - name: Create Release Archive
+        run: |
+          cd release
+          tar -czf blender279-modular-${{ github.event.release.tag_name }}-linux.tar.gz blender_mod
+          tar -czf blender279-modular-${{ github.event.release.tag_name }}-android-arm64.tar.gz libblender279_modular.so
+          # APK already in folder
+      
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release/blender279-modular-${{ github.event.release.tag_name }}-linux.tar.gz
+            release/blender279-modular-${{ github.event.release.tag_name }}-android-arm64.tar.gz
+            release/*.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
