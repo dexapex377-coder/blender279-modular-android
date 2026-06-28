@@ -21,8 +21,7 @@ typedef struct BLE_MeshModule {
     // BMesh API
     BLE_BMesh* (*bmesh_new)(void);
     void (*bmesh_free)(BLE_BMesh* bm);
-    m);
-    void (*bmesh_clear)(BLE_BMesh* b m);
+    void (*bmesh_clear)(BLE_BMesh* bm);
     
     // DerivedMesh API
     BLE_DerivedMesh* (*derived_mesh_create)(BLE_Mesh* mesh);
@@ -38,7 +37,7 @@ typedef struct BLE_MeshModule {
     void (*modifier_eval_stack)(BLE_Object* ob);
     
     // PBVH (sculpt)
-    BLE_PBVH* (*pbvh_new_from_bmesh)(BLE_BMesh* b m);
+    BLE_PBVH* (*pbvh_new_from_bmesh)(BLE_BMesh* bm);
     void (*pbvh_free)(BLE_PBVH* pbvh);
     
     // Modifier Type Registry
@@ -48,12 +47,15 @@ typedef struct BLE_MeshModule {
     BLE_ModifierTypeInfo* (*modifier_find_type)(const char* name);
 } BLE_MeshModule;
 
+BLE_Module;
+
 BLE_Module* BLE_mesh_module_create(void);
+BLE_Module* BLE_module_get_ble_mesh(void);
 
 // BMesh API
 BLE_BMesh* BLE_bmesh_new(void);
-void BLE_bmesh_free(BLE_BMesh* b m);
-void BLE_bmesh_clear(BLE_BMesh* b m);
+void BLE_bmesh_free(BLE_BMesh* bm);
+void BLE_bmesh_clear(BLE_BMesh* bm);
 
 // DerivedMesh API
 BLE_DerivedMesh* BLE_derived_mesh_create(BLE_Mesh* mesh);
@@ -73,7 +75,7 @@ int BLE_modifier_register_type(BLE_ModifierTypeInfo* info);
 BLE_ModifierTypeInfo* BLE_modifier_find_type(const char* name);
 
 // PBVH
-BLE_PBVH* BLE_pbvh_new_from_bmesh(BLE_BMesh* b m);
+BLE_PBVH* BLE_pbvh_new_from_bmesh(BLE_BMesh* bm);
 void BLE_pbvh_free(BLE_PBVH* pbvh);
 
 #ifdef __cplusplus
