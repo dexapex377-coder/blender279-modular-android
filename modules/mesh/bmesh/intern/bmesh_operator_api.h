@@ -201,6 +201,19 @@ void *BMO_slot_buffer_get_first(BMOpSlot slot_args[], const char *slot_name);
 	     ele; \
 	     BM_CHECK_TYPE_ELEM_ASSIGN(ele) = BMO_iter_step(iter), i_++)
 
+/* copies the data of a slot from one operator to another. src and dst are the
+ * source/destination slot codes, respectively. */
+#define BMO_slot_copy(op_src, slots_src, slot_name_src,                       \
+                      op_dst, slots_dst, slot_name_dst)                       \
+	_bmo_slot_copy((op_src)->slots_src, slot_name_src,                        \
+	               (op_dst)->slots_dst, slot_name_dst,                        \
+	               (op_dst)->arena)
+
+void _bmo_slot_copy(
+        BMOpSlot slot_args_src[BMO_OP_MAX_SLOTS], const char *slot_name_src,
+        BMOpSlot slot_args_dst[BMO_OP_MAX_SLOTS], const char *slot_name_dst,
+        struct MemArena *arena_dst);
+
 #ifdef __cplusplus
 }
 #endif

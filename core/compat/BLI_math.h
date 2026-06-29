@@ -182,6 +182,13 @@ void linearrgb_to_srgb_v4(float r[4], const float srgb[4]);
 /* Planar */
 int isect_line_line_v2(const float p1[2], const float p2[2], const float p3[2], const float p4[2]);
 int isect_line_line_v2_int(const int p1[2], const int p2[2], const int p3[2], const int p4[2]);
+
+/* ISECT_LINE_LINE return values */
+#define ISECT_LINE_LINE_COLINEAR    -1
+#define ISECT_LINE_LINE_NONE         0
+#define ISECT_LINE_LINE_EXACT        1
+#define ISECT_LINE_LINE_CROSS        2
+
 int isect_line_sphere_v3(const float p1[3], const float p2[3], const float sp[3], float r, float *r_p1, float *r_p2);
 int isect_ray_plane_v3(const float p1[3], const float d[3], const float plane[4], float *lambda, float r_isect[3]);
 int isect_ray_tri_epsilon_v3(const float p[3], const float d[3], const float v0[3], const float v1[3], const float v2[3], float *r_lambda, float r_uv[2], const float epsilon);

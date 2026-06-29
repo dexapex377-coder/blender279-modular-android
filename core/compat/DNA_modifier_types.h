@@ -54,6 +54,27 @@ enum {
     eModifierType_Hook = 18,
 };
 
+/* TriangulateModifier flags (deprecated) */
+#ifdef DNA_DEPRECATED
+enum {
+	MOD_TRIANGULATE_BEAUTY = (1 << 0),
+};
+#endif
+
+/* Triangulate methods - NGons */
+enum {
+	MOD_TRIANGULATE_NGON_BEAUTY = 0,
+	MOD_TRIANGULATE_NGON_EARCLIP,
+};
+
+/* Triangulate methods - Quads */
+enum {
+	MOD_TRIANGULATE_QUAD_BEAUTY = 0,
+	MOD_TRIANGULATE_QUAD_FIXED,
+	MOD_TRIANGULATE_QUAD_ALTERNATE,
+	MOD_TRIANGULATE_QUAD_SHORTEDGE
+};
+
 #ifdef __cplusplus
 }
 #endif
