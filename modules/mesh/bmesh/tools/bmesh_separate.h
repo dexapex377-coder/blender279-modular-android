@@ -27,7 +27,7 @@
  *  \ingroup bmesh
  */
 
-typedef bool (*BMFaceFilterFunc)(BMFace *f, void *user_data);
+typedef bool (*BMFaceFilterFunc)(const BMFace *, void *user_data);
 
 void BM_mesh_separate_faces(
         BMesh *bm,
