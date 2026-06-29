@@ -59,6 +59,8 @@ enum ModifierType {
     eModifierType_Lattice = 5,
     eModifierType_ShapeKey = 6,
 };
+
+typedef struct ArmatureModifierData {
     ModifierData modifier;
     struct Armature *object;
     short flag;
