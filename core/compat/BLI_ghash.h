@@ -83,6 +83,11 @@ int BLI_ghashutil_uinthash_v4_cmp(const void *a, const void *b);
          !BLI_ghashIterator_isDone(&gh_iter_); \
          BLI_ghashIterator_step(&gh_iter_))
 
+#define GHASH_ITER_INDEX(gh_iter_, ghash_, i_) \
+    for (BLI_ghashIterator_init(&gh_iter_, ghash_), i_ = 0; \
+         BLI_ghashIterator_done(&gh_iter_) == false; \
+         BLI_ghashIterator_step(&gh_iter_), i_++)
+
 #ifdef __cplusplus
 }
 #endif
