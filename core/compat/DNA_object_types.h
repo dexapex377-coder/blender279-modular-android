@@ -45,7 +45,7 @@ typedef struct Object {
     float constinv[4][4];
     float trackflag, upflag;
     struct BoundBox *bb;
-    void *curve_cache;
+    struct CurveCache *curve_cache;
 } Object;
 
 /* Parent types */

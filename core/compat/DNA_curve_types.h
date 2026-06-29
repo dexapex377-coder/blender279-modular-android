@@ -18,6 +18,18 @@ typedef struct Curve {
     int actnu;
 } Curve;
 
+typedef struct PathPoint {
+    float vec[4];
+    float quat[4];
+    float radius, weight;
+} PathPoint;
+
+typedef struct Path {
+    struct PathPoint *data;
+    int len;
+    float totdist;
+} Path;
+
 #ifdef __cplusplus
 }
 #endif
