@@ -59,6 +59,11 @@
 #define BEVEL_MAX_ADJUST_PCT 10.0f
 #define BEVEL_MAX_AUTO_ADJUST_PCT 300.0f
 
+/* Forward declarations for static functions */
+static bool make_unit_square_map(
+        const float va[3], const float vmid[3], const float vb[3],
+        float r_mat[4][4]);
+
 /* happens far too often, uncomment for development */
 // #define BEVEL_ASSERT_PROJECT
 
