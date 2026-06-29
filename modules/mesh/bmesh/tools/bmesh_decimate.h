@@ -27,13 +27,7 @@
  *  \ingroup bmesh
  */
 
-typedef enum BMO_Delimit {
-    BMO_DELIMIT_NORMAL = (1 << 0),
-    BMO_DELIMIT_MATERIAL = (1 << 1),
-    BMO_DELIMIT_SEAM = (1 << 2),
-    BMO_DELIMIT_SHARP = (1 << 3),
-    BMO_DELIMIT_UV = (1 << 4),
-} BMO_Delimit;
+#include "bmesh_operator_api.h"
 
 void BM_mesh_decimate_collapse(
         BMesh *bm, const float factor,
