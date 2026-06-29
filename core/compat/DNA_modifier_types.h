@@ -2,10 +2,16 @@
 #define __DNA_MODIFIER_TYPES_H__
 
 #include "DNA_scene_types.h"
+#include "DNA_cloth_types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+struct PointCache;
+struct Cloth;
+struct ClothHairData;
+struct ClothSolverResult;
 
 typedef struct ModifierData {
     struct ModifierData *next, *prev;
@@ -293,6 +299,43 @@ enum {
     MOD_CAST_TYPE_CYLINDER = 1,
     MOD_CAST_TYPE_CUBOID   = 2,
 };
+
+typedef struct ClothModifierData {
+    ModifierData modifier;
+
+    struct Scene *scene;
+    struct Cloth *clothObject;
+    struct ClothSimSettings *sim_parms;
+    struct ClothCollSettings *coll_parms;
+    struct PointCache *point_cache;
+    struct ListBase ptcaches;
+    struct ClothHairData *hairdata;
+    float hair_grid_min[3];
+    float hair_grid_max[3];
+    int hair_grid_res[3];
+    float hair_grid_cellsize;
+    struct ClothSolverResult *solver_result;
+} ClothModifierData;
+
+typedef struct CollisionModifierData {
+    ModifierData modifier;
+
+    struct MVert *x;
+    struct MVert *xnew;
+    struct MVert *xold;
+    struct MVert *current_xnew;
+    struct MVert *current_x;
+    struct MVert *current_v;
+    struct MVertTri *tri;
+
+    unsigned int mvert_num;
+    unsigned int tri_num;
+    float time_x, time_xnew;
+    char is_static;
+    char pad[7];
+
+    struct BVHTree *bvhtree;
+} CollisionModifierData;
 
 /* TriangulateModifier flags (deprecated) */
 #ifdef DNA_DEPRECATED

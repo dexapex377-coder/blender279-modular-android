@@ -10,12 +10,15 @@
 extern "C" {
 #endif
 
+struct PartDeflect;
+
 typedef struct Object {
     struct Object *next, *prev;
     struct ID id;
     int type;
     int flag;
     int mode;
+    unsigned int lay;
     int restrictflag;
     float loc[3];
     float rot[3];
@@ -33,6 +36,7 @@ typedef struct Object {
     short upflag2;
     int par1, par2, par3;
     struct Mesh *data;
+    struct PartDeflect *pd;
     struct Material **mat;
     struct bDeformGroup *defbase;
     int totcol;

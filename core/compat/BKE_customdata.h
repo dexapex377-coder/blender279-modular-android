@@ -72,6 +72,7 @@ enum {
 #define CD_MASK_MEDGE ((CD_MASK_BMESH) & (1 << CD_MEDGE))
 #define CD_MASK_ORIGINDEX (1 << CD_ORIGINDEX)
 #define CD_MASK_DERIVEDMESH (((CustomDataMask)1 << CD_NUM) - 1)
+#define CD_MASK_CLOTH_ORCO (1 << CD_CLOTH_ORCO)
 
 
 /* Special index value for original indices */
