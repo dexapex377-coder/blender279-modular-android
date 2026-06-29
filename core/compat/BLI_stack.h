@@ -9,7 +9,7 @@ extern "C" {
 
 typedef struct BLI_Stack BLI_Stack;
 
-BLI_Stack *BLI_stack_new(size_t elem_size, size_t chunk_size, const char *name);
+BLI_Stack *BLI_stack_new(size_t elem_size, const char *name);
 void BLI_stack_free(BLI_Stack *stack);
 void BLI_stack_push(BLI_Stack *stack, const void *item);
 void BLI_stack_pop(BLI_Stack *stack, void *item);

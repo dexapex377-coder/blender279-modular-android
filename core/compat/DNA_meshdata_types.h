@@ -57,6 +57,7 @@ typedef struct MDisps {
 #define ME_HIDE         4
 #define ME_LOOSEEDGE    8
 #define ME_EDGERENDER   16
+#define ME_SHARP        1   /* same as ME_EDGEDRAW in 2.79 */
 
 /* MVert flags */
 #define ME_VSEL       (1<<1)  /* vertex select flag */

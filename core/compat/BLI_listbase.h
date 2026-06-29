@@ -12,6 +12,17 @@ extern "C" {
 #define BLI_listbase_is_empty(list) ((list)->first == NULL)
 #define BLI_listbase_count(list) _bli_listbase_count(list)
 
+/* Standard linked list node types */
+typedef struct LinkNode {
+    struct LinkNode *next;
+    void *link;
+} LinkNode;
+
+typedef struct LinkData {
+    struct LinkData *next, *prev;
+    void *data;
+} LinkData;
+
 int _bli_listbase_count(const ListBase *list);
 
 void BLI_addhead(ListBase *listbase, void *vlink);
@@ -33,6 +44,7 @@ void BLI_listbase_sort(ListBase *lb, int (*cmp)(const void *, const void *));
 
 #ifdef __cplusplus
 }
+#endif
 
 /* Inline stubs for implementations */
 BLI_INLINE void *BLI_findptr(const ListBase *list, const void *ptr, int offset) { (void)list; (void)ptr; (void)offset; return NULL; }
@@ -42,6 +54,5 @@ BLI_INLINE void *BLI_pophead(ListBase *list) { void *f = list->first; if (f) BLI
 BLI_INLINE void *BLI_genericNodeN(const void *data) { (void)data; return NULL; }
 BLI_INLINE void BLI_listbase_reverse(ListBase *lb) { (void)lb; }
 BLI_INLINE void BLI_listbase_sort(ListBase *lb, int (*cmp)(const void *, const void *)) { (void)lb; (void)cmp; }
-#endif
 
 #endif

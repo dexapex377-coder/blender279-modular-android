@@ -2,15 +2,11 @@
 #define __BLI_LINKLIST_H__
 
 #include "DNA_listBase.h"
+#include "BLI_listbase.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-typedef struct LinkNode {
-    struct LinkNode *next;
-    void *link;
-} LinkNode;
 
 void BLI_linklist_prepend(LinkNode **list, void *link);
 void BLI_linklist_prepend_n(LinkNode **list, void *link, LinkNode *node);

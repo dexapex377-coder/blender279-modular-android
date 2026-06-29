@@ -233,6 +233,12 @@ extern "C" {
 #include "MEM_guardedalloc.h"
 #include "BKE_customdata.h"
 
+/* Disable C11 _Generic to avoid complex GENERIC_TYPE_ANY macro dependency */
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L)
+#  undef __STDC_VERSION__
+#  define __STDC_VERSION__ 199901L
+#endif
+
 #include "bmesh_class.h"
 
 /* include the rest of the API */

@@ -18,7 +18,7 @@
 
 #define BLI_SMALLSTACK_IS_EMPTY(var) ((var##_stack_index) == 0)
 
-#define BLI_SMALLSTACK_AS_TABLE(var) (var##_stack)
+#define BLI_SMALLSTACK_AS_TABLE(var, ret) (ret = var##_stack)
 #define BLI_SMALLSTACK_POP_EX(var, type) ((type)BLI_SMALLSTACK_POP(var))
 #define BLI_SMALLSTACK_SWAP(var_a, var_b) \
     { typeof(var_a##_stack) _tmp_stack = var_a##_stack; \
