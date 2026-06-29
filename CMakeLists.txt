@@ -119,6 +119,9 @@ add_subdirectory(modules/anim)
 # Physics module
 add_subdirectory(modules/physics)
 
+# Render module
+add_subdirectory(modules/render)
+
 # Render plugin
 set(RENDER_SRCS
     plugins/render/BLE_render_module.c
