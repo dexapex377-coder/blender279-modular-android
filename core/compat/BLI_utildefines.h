@@ -42,7 +42,9 @@
 #define ZERO_V4 0.0f, 0.0f, 0.0f, 0.0f
 
 /* Compiler macros */
-#define UNUSED(x) ((void)(x))
+#ifndef UNUSED
+#define UNUSED(x) x
+#endif
 #define UNUSED_VARS(...) ((void)0)
 
 #define CHECK_TYPE(var, type) { typeof(var) *__tmp; __tmp = (type *)NULL; (void)__tmp; } (void)0

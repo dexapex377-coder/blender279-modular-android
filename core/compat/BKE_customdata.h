@@ -33,6 +33,9 @@ enum {
     CD_MTFACE_LAYER = 21,
     CD_PAINT_MASK = 22,
     CD_MVERT_SKIN = 23,
+    CD_SHAPE_KEYINDEX = 24,
+    CD_SHAPEKEY = 25,
+    CD_EASY = 26,
     CD_NUM = 32,
 };
 
@@ -46,6 +49,19 @@ enum {
 #define CD_LAYER_TYPE_MASK 0xFFFF
 #define CD_LAYER_FLAG_ACTIVE 0x10000
 #define CD_LAYER_FLAG_DEFAULT 0x20000
+
+/* Copy modes */
+#define CD_ASSIGN 0
+#define CD_CALLOC 1
+#define CD_DEFAULT 2
+#define CD_REFERENCE 3
+#define CD_DUPLICATE 4
+
+/* BMesh mask includes all standard mesh layers */
+#define CD_MASK_BMESH ((1 << CD_NUM) - 1)
+
+/* Special index value for original indices */
+#define ORIGINDEX_NONE -1
 
 typedef void (*CDInterpFunction)(const void **sources, const float *weights, void *dest, int count);
 typedef void (*CDEqualsFunction)(const void *a, const void *b, int *equal);

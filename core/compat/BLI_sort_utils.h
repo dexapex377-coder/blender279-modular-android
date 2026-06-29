@@ -21,9 +21,14 @@ typedef struct {
 } SortPtrByFloat;
 
 typedef struct {
-    int value;
+    float value;
     void *ptr;
 } SortPtrByInt;
+
+typedef struct {
+    float sort_value;
+    int data;
+} SortIntByFloat;
 
 int BLI_sortutil_cmp_float(const void *a, const void *b);
 int BLI_sortutil_cmp_int(const void *a, const void *b);
