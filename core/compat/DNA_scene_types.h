@@ -2,6 +2,7 @@
 #define __DNA_SCENE_TYPES_H__
 
 #include "DNA_listBase.h"
+#include "DNA_ID.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -12,7 +13,6 @@ typedef struct Scene {
     struct ID id;
     struct Object *camera;
     struct World *world;
-    struct Base *base;
     struct Base *basact;
     ListBase base;
     ListBase object;
