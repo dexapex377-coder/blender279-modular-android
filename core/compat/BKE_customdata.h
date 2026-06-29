@@ -1,6 +1,8 @@
 #ifndef __BKE_CUSTOMDATA_H__
 #define __BKE_CUSTOMDATA_H__
 
+#include <stdbool.h>
+
 #include "DNA_customdata_types.h"
 
 #ifdef __cplusplus
@@ -90,8 +92,8 @@ void CustomData_set_layer_name(CustomData *data, int type, int n, const char *na
 void CustomData_set_layer_unique_name(CustomData *data, int type, int n);
 void CustomData_add_layer(CustomData *data, int type, int flag, void *layer, int count);
 void CustomData_add_layer_named(CustomData *data, int type, int flag, void *layer, int count, const char *name);
-void CustomData_free_layer(CustomData *data, int type, int count, int index);
-void CustomData_free_layer_active(CustomData *data, int type, int count);
+bool CustomData_free_layer(CustomData *data, int type, int count, int index);
+bool CustomData_free_layer_active(CustomData *data, int type, int count);
 void CustomData_free(CustomData *data, int count);
 void CustomData_reset(CustomData *data);
 void CustomData_copy(const CustomData *source, CustomData *dest, int mask, int flag, int count);

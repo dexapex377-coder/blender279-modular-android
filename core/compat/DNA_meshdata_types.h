@@ -40,9 +40,10 @@ typedef struct MSelect {
 } MSelect;
 
 typedef struct MDisps {
-    float *disps;
     int totdisp;
     int level;
+    float (*disps)[3];
+    unsigned int *hidden;
     int side;
     int flags;
 } MDisps;
