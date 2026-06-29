@@ -73,6 +73,10 @@ unsigned int BLI_ghashutil_inthash_v4(const void *key);
 int BLI_ghashutil_inthash_v4_cmp(const void *a, const void *b);
 unsigned int BLI_ghashutil_inthash_p_simple(const void *key);
 
+#define BLI_ghashutil_inthash_v4_p ((GHashHashFP)BLI_ghashutil_uinthash_v4)
+#define BLI_ghashutil_uinthash_v4_p ((GHashHashFP)BLI_ghashutil_uinthash_v4)
+#define BLI_ghashutil_inthash_v4_cmp BLI_ghashutil_uinthash_v4_cmp
+
 #define GHASH_ITER(gh_iter_, ghash_) \
     for (BLI_ghashIterator_init(&gh_iter_, ghash_); \
          !BLI_ghashIterator_isDone(&gh_iter_); \
