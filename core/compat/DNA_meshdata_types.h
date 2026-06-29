@@ -39,14 +39,24 @@ typedef struct MSelect {
     int type;
 } MSelect;
 
+typedef struct MDisps {
+    float *disps;
+    int totdisp;
+    int level;
+    int side;
+    int flags;
+} MDisps;
+
 /* MVert flags */
 #define SELECT 1
 #define MV_HIDE 2
 
 /* MEdge flags */
-#define ME_SHARP 1
-#define ME_SEAM 2
-#define ME_HIDE 4
+#define ME_EDGEDRAW     1
+#define ME_SEAM         2
+#define ME_HIDE         4
+#define ME_LOOSEEDGE    8
+#define ME_EDGERENDER   16
 
 /* MPoly flags */
 #define ME_SMOOTH 1
