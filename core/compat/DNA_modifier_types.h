@@ -131,6 +131,8 @@ typedef struct ModifierData {
 
     char *error;
 } ModifierData;
+
+typedef struct ArmatureModifierData {
     ModifierData modifier;
     struct Armature *object;
     short flag;
