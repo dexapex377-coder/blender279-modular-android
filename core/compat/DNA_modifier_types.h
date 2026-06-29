@@ -54,6 +54,56 @@ enum {
     eModifierType_Hook = 18,
 };
 
+typedef struct ArmatureModifierData {
+    ModifierData modifier;
+    struct Armature *object;
+    short flag;
+    short mode;
+    int limit;
+    short use_deform_preserve_volume;
+    short pad;
+    float mult;
+} ArmatureModifierData;
+
+typedef struct CurveModifierData {
+    ModifierData modifier;
+    struct Object *object;
+    struct Curve *curve;
+    char subtarget[64];
+    short flag;
+    short mode;
+    short deform_axis;
+    short pad;
+} CurveModifierData;
+
+typedef struct LatticeModifierData {
+    ModifierData modifier;
+    struct Object *object;
+    struct Lattice *lattice;
+    short flag;
+    short pad;
+} LatticeModifierData;
+
+typedef struct ShapeKeyModifierData {
+    ModifierData modifier;
+    struct Key *key;
+    struct Object *object;
+    char name[64];
+    short flag;
+    short pad;
+} ShapeKeyModifierData;
+
+/* Modifier types */
+enum ModifierType {
+    eModifierType_Subsurf = 0,
+    eModifierType_Multires = 1,
+    eModifierType_Hook = 2,
+    eModifierType_Armature = 3,
+    eModifierType_Curve = 4,
+    eModifierType_Lattice = 5,
+    eModifierType_ShapeKey = 6,
+};
+
 /* TriangulateModifier flags (deprecated) */
 #ifdef DNA_DEPRECATED
 enum {

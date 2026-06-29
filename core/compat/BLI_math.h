@@ -202,7 +202,7 @@ int isect_ray_tri_epsilon_v3(const float p[3], const float d[3], const float v0[
 int isect_line_plane_v3(float r[3], const float l1[3], const float l2[3], const float plane_co[3], const float plane_no[3]);
 
 /* Random */
-void BLI_srandom(int seed);
+
 int BLI_rand(void);
 float BLI_frand(void);
 
