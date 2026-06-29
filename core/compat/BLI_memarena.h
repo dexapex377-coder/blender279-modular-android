@@ -3,6 +3,9 @@
 
 #include <stdlib.h>
 
+#define MEM_SIZE_OPTIMAL(x) (x)
+#define BLI_MEMARENA_STD_BUFSIZE MEM_SIZE_OPTIMAL(1 << 14)
+
 #ifdef __cplusplus
 extern "C" {
 #endif
