@@ -129,9 +129,6 @@ target_compile_definitions(blender279_modular PRIVATE
     WITH_CXX11
 )
 
-# Link math library
-target_link_libraries(blender279_modular PRIVATE m)
-
 # Set C++ standard for Cycles
 set_target_properties(blender279_modular PROPERTIES
     CXX_STANDARD 11

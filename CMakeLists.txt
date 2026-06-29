@@ -45,13 +45,9 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Android")
     set(PLATFORM_LIBS ${EGL_LIBRARY} ${GLESv3_LIBRARY} ${LOG_LIBRARY} ${ANDROID_LIBRARY} ${DL_LIBRARY} m)
 else()
     find_package(OpenGL REQUIRED)
-    find_package(PkgConfig QUIET)
-    if(PkgConfig_FOUND)
-        pkg_check_modules(GLESv3 glesv3)
-    endif()
     find_package(Threads REQUIRED)
 
-    set(PLATFORM_LIBS ${OPENGL_LIBRARIES} Threads::Threads m ${GLESv3_LIBRARIES})
+    set(PLATFORM_LIBS ${OPENGL_LIBRARIES} Threads::Threads m)
 endif()
 
 # Core sources
@@ -115,7 +111,7 @@ add_library(blender279_modular SHARED
     ${RENDER_PLUGIN_SRCS}
 )
 
-target_link_libraries(blender279_modular ${PLATFORM_LIBS})
+target_link_libraries(blender279_modular PRIVATE ${PLATFORM_LIBS})
 
 # Modules add their sources via target_sources
 add_subdirectory(modules/tools)
