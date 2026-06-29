@@ -2,6 +2,7 @@
 #define __BKE_CDDERIVEDMESH_H__
 
 #include "BKE_DerivedMesh.h"
+#include "DNA_object_types.h"
 
 #ifdef __cplusplus
 extern "C" {
