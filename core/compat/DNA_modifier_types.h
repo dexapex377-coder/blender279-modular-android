@@ -50,11 +50,15 @@ typedef struct HookModifierData {
 } HookModifierData;
 
 /* Modifier types */
-enum {
-    eModifierType_Hook = 18,
+enum ModifierType {
+    eModifierType_Subsurf = 0,
+    eModifierType_Multires = 1,
+    eModifierType_Hook = 2,
+    eModifierType_Armature = 3,
+    eModifierType_Curve = 4,
+    eModifierType_Lattice = 5,
+    eModifierType_ShapeKey = 6,
 };
-
-typedef struct ArmatureModifierData {
     ModifierData modifier;
     struct Armature *object;
     short flag;
@@ -92,17 +96,6 @@ typedef struct ShapeKeyModifierData {
     short flag;
     short pad;
 } ShapeKeyModifierData;
-
-/* Modifier types */
-enum ModifierType {
-    eModifierType_Subsurf = 0,
-    eModifierType_Multires = 1,
-    eModifierType_Hook = 2,
-    eModifierType_Armature = 3,
-    eModifierType_Curve = 4,
-    eModifierType_Lattice = 5,
-    eModifierType_ShapeKey = 6,
-};
 
 /* TriangulateModifier flags (deprecated) */
 #ifdef DNA_DEPRECATED
