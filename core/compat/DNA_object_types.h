@@ -31,7 +31,7 @@ typedef struct Object {
     short transflag;
     short trackflag2;
     short upflag2;
-    float par1, par2, par3;
+    int par1, par2, par3;
     struct Mesh *data;
     struct Material **mat;
     struct bDeformGroup *defbase;
