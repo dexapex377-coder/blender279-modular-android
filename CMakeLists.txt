@@ -57,6 +57,7 @@ set(CORE_SRCS
     core/BLE_core_memory.c
     core/BLE_core_math.c
     core/BLE_core_dna.c
+    core/compat/range_tree.c
 )
 
 # GPU backend sources (disabled - needs Blender 3.6 headers from epai)
