@@ -3,7 +3,6 @@
 
 #include "DNA_defs.h"
 #include "DNA_ID.h"
-#include "DNA_boid_types.h"
 
 struct AnimData;
 struct CurveMapping;
