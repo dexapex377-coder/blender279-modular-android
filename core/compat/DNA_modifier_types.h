@@ -54,6 +54,19 @@ typedef struct HookModifierData {
     float curfalloff;
 } HookModifierData;
 
+typedef struct BuildModifierData {
+    ModifierData modifier;
+    float start, length;
+    short flag;
+    short randomize;
+    int seed;
+} BuildModifierData;
+
+enum {
+    MOD_BUILD_FLAG_RANDOMIZE = (1 << 0),
+    MOD_BUILD_FLAG_REVERSE   = (1 << 1),
+};
+
 /* Modifier types */
 typedef enum ModifierType {
 	eModifierType_None              = 0,

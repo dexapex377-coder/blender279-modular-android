@@ -64,21 +64,6 @@
 #  define DNA_DEPRECATED_GCC_POISON(x)
 #endif
 
-/* check if we are reading the file from DNA generator */
-#ifdef DNA_INTERNAL
-#  define DNA_DEPRECATED_ALLOW 0
-#else
-#  define DNA_DEPRECATED_ALLOW 1
-#endif
-
-#ifndef DNA_INTERNAL
-#  ifdef DNA_DEPRECATED
-#    define DNA_DEPRECATED(x) DNA_DEPRECATED
-#  else
-#    define DNA_DEPRECATED(x)
-#  endif
-#endif
-
 /* makesdna ignores */
 #define DNA_DEPRECATED_ALLOW_GEN DNA_DEPRECATED_ALLOW
 
