@@ -16,6 +16,7 @@ typedef struct Mesh {
     int totvert, totedge, totface, totloop, totpoly;
     int totselect;
     int cd_flag;
+    short flag;
     struct MVert *mvert;
     struct MEdge *medge;
     struct MFace *mface;
@@ -29,6 +30,10 @@ typedef struct Mesh {
     ListBase fcache;
     int act_face;
 } Mesh;
+
+enum {
+    ME_AUTOSMOOTH = (1 << 5),
+};
 
 #ifdef __cplusplus
 }

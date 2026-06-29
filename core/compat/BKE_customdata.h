@@ -125,6 +125,13 @@ typedef unsigned long long CustomDataMask;
 
 #define CD_MASK_MESH (CD_TYPE_AS_MASK(CD_MVERT) | CD_TYPE_AS_MASK(CD_MEDGE) | CD_TYPE_AS_MASK(CD_MFACE) | CD_TYPE_AS_MASK(CD_MLOOP) | CD_TYPE_AS_MASK(CD_MPOLY))
 
+enum {
+    ME_VERT = 1 << 0,
+    ME_EDGE = 1 << 1,
+    ME_POLY = 1 << 2,
+    ME_LOOP = 1 << 3,
+};
+
 #ifdef __cplusplus
 }
 #endif

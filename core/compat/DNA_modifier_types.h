@@ -391,6 +391,40 @@ typedef struct CorrectiveSmoothModifierData {
     char pad2[4];
 } CorrectiveSmoothModifierData;
 
+typedef struct DataTransferModifierData {
+    ModifierData modifier;
+
+    struct Object *ob_source;
+
+    int data_types;
+
+    int vmap_mode;
+    int emap_mode;
+    int lmap_mode;
+    int pmap_mode;
+
+    float map_max_distance;
+    float map_ray_radius;
+    float islands_precision;
+
+    int pad_i1;
+
+    int layers_select_src[4];
+    int layers_select_dst[4];
+
+    int mix_mode;
+    float mix_factor;
+    char defgrp_name[64];
+
+    int flags;
+} DataTransferModifierData;
+
+enum {
+    MOD_DATATRANSFER_OBSRC_TRANSFORM = 1 << 0,
+    MOD_DATATRANSFER_MAP_MAXDIST     = 1 << 1,
+    MOD_DATATRANSFER_INVERT_VGROUP   = 1 << 2,
+};
+
 enum {
     MOD_CORRECTIVESMOOTH_SMOOTH_SIMPLE         = 0,
     MOD_CORRECTIVESMOOTH_SMOOTH_LENGTH_WEIGHT  = 1,

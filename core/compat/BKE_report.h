@@ -14,6 +14,8 @@ typedef enum eReportType {
     RPT_HINT = 7,
 } eReportType;
 
+#define RPT_STORE 1
+
 typedef struct ReportList {
     void *list;
     int flags;
@@ -23,5 +25,6 @@ typedef struct ReportList {
 
 #define BKE_report(reports, type, msg) ((void)(reports), (void)(type), (void)(msg))
 #define BKE_reportf(reports, type, fmt, ...) ((void)(reports), (void)(type))
+#define BKE_reports_init(reports, flags) ((void)(reports), (void)(flags))
 
 #endif
