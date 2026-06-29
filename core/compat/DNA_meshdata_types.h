@@ -1,6 +1,8 @@
 #ifndef __DNA_MESHDATA_TYPES_H__
 #define __DNA_MESHDATA_TYPES_H__
 
+#include "DNA_object_types.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
