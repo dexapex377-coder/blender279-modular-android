@@ -64,8 +64,13 @@ typedef struct Depsgraph Depsgraph;
 typedef struct DepsNode DepsNode;
 typedef struct DepsRelation DepsRelation;
 
+enum {
+    DAG_EVAL_NEED_CURVE_PATH = 1,
+};
+
 void DEG_id_type_tag(struct Main *bmain, int id_type);
 void DEG_relations_tag_update(struct Main *bmain);
+void DEG_add_special_eval_flag(struct Depsgraph *depsgraph, struct ID *id, short flag);
 
 #ifdef __cplusplus
 }
