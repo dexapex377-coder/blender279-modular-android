@@ -141,6 +141,30 @@ void *BMO_slot_as_arrayN(BMOpSlot slot_args[], const char *slot_name, int *len);
 void BMO_slot_ptr_set(BMOpSlot slot_args[], const char *slot_name, void *p);
 void *BMO_slot_ptr_get(BMOpSlot slot_args[], const char *slot_name);
 
+/* Iterator */
+typedef struct BMOIter {
+    BMOpSlot *slot;
+    int cur;
+    GHashIterator giter;
+    void **val;
+    char restrictmask;
+} BMOIter;
+
+void *BMO_slot_buffer_get_first(BMOpSlot slot_args[BMO_OP_MAX_SLOTS], const char *slot_name);
+
+void *BMO_iter_new(
+        BMOIter *iter,
+        BMOpSlot slot_args[BMO_OP_MAX_SLOTS], const char *slot_name,
+        const char restrictmask);
+void *BMO_iter_step(BMOIter *iter);
+
+void **BMO_iter_map_value_p(BMOIter *iter);
+void  *BMO_iter_map_value_ptr(BMOIter *iter);
+
+float BMO_iter_map_value_float(BMOIter *iter);
+int   BMO_iter_map_value_int(BMOIter *iter);
+bool  BMO_iter_map_value_bool(BMOIter *iter);
+
 #ifdef __cplusplus
 }
 #endif
