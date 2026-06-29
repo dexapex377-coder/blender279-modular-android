@@ -1,13 +1,15 @@
 #ifndef __DNA_MATERIAL_TYPES_H__
 #define __DNA_MATERIAL_TYPES_H__
 
+#include "DNA_ID.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 typedef struct Material {
     struct Material *next, *prev;
-    struct ID id;
+    ID id;
     short flag;
     short type;
     float r, g, b, a;

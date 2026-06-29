@@ -70,6 +70,8 @@ enum {
 #define CD_MASK_MDEFORMVERT (1 << CD_MDEFORMVERT)
 #define CD_MASK_MTFACE ((CD_MASK_BMESH) & (1 << CD_MTFACE))
 #define CD_MASK_MEDGE ((CD_MASK_BMESH) & (1 << CD_MEDGE))
+#define CD_MASK_ORIGINDEX (1 << CD_ORIGINDEX)
+#define CD_MASK_DERIVEDMESH (((CustomDataMask)1 << CD_NUM) - 1)
 
 
 /* Special index value for original indices */

@@ -270,6 +270,30 @@ enum {
     eBooleanModifierBMeshFlag_BMesh_NoConnectRegions = (1 << 2),
 };
 
+typedef struct CastModifierData {
+    ModifierData modifier;
+    struct Object *object;
+    float fac;
+    float radius;
+    float size;
+    char defgrp_name[64];
+    short flag, type;
+} CastModifierData;
+
+enum {
+    MOD_CAST_X                = (1 << 1),
+    MOD_CAST_Y                = (1 << 2),
+    MOD_CAST_Z                = (1 << 3),
+    MOD_CAST_USE_OB_TRANSFORM = (1 << 4),
+    MOD_CAST_SIZE_FROM_RADIUS = (1 << 5),
+};
+
+enum {
+    MOD_CAST_TYPE_SPHERE   = 0,
+    MOD_CAST_TYPE_CYLINDER = 1,
+    MOD_CAST_TYPE_CUBOID   = 2,
+};
+
 /* TriangulateModifier flags (deprecated) */
 #ifdef DNA_DEPRECATED
 enum {
