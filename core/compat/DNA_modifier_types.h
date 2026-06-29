@@ -224,13 +224,19 @@ enum {
 typedef struct CurveModifierData {
     ModifierData modifier;
     struct Object *object;
-    struct Curve *curve;
-    char subtarget[64];
-    short flag;
-    short mode;
-    short deform_axis;
-    short pad;
+    char name[64];
+    short defaxis;
+    char pad[6];
 } CurveModifierData;
+
+enum {
+    MOD_CURVE_POSX = 1,
+    MOD_CURVE_POSY = 2,
+    MOD_CURVE_POSZ = 3,
+    MOD_CURVE_NEGX = 4,
+    MOD_CURVE_NEGY = 5,
+    MOD_CURVE_NEGZ = 6,
+};
 
 typedef struct LatticeModifierData {
     ModifierData modifier;
@@ -336,6 +342,41 @@ typedef struct CollisionModifierData {
 
     struct BVHTree *bvhtree;
 } CollisionModifierData;
+
+typedef struct CorrectiveSmoothModifierData {
+    ModifierData modifier;
+
+    float (*bind_coords)[3];
+
+    unsigned int bind_coords_num;
+
+    float lambda;
+    short repeat, flag;
+    char smooth_type, rest_source;
+    char pad[2];
+
+    char defgrp_name[64];
+
+    float (*delta_cache)[3];
+    unsigned int delta_cache_num;
+    char pad2[4];
+} CorrectiveSmoothModifierData;
+
+enum {
+    MOD_CORRECTIVESMOOTH_SMOOTH_SIMPLE         = 0,
+    MOD_CORRECTIVESMOOTH_SMOOTH_LENGTH_WEIGHT  = 1,
+};
+
+enum {
+    MOD_CORRECTIVESMOOTH_RESTSOURCE_ORCO       = 0,
+    MOD_CORRECTIVESMOOTH_RESTSOURCE_BIND       = 1,
+};
+
+enum {
+    MOD_CORRECTIVESMOOTH_INVERT_VGROUP         = (1 << 0),
+    MOD_CORRECTIVESMOOTH_ONLY_SMOOTH           = (1 << 1),
+    MOD_CORRECTIVESMOOTH_PIN_BOUNDARY          = (1 << 2),
+};
 
 /* TriangulateModifier flags (deprecated) */
 #ifdef DNA_DEPRECATED

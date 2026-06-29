@@ -15,8 +15,11 @@ typedef struct ID {
     short flag;
     int us;
     int icon_id;
+    int tag;
     void *properties;
 } ID;
+
+#define LIB_TAG_ID_RECALC 1
 
 #ifdef __cplusplus
 }

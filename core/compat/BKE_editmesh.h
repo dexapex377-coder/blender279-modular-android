@@ -2,6 +2,7 @@
 #define __BKE_EDITMESH_H__
 
 #include "DNA_listBase.h"
+#include "bmesh.h"
 
 #ifdef __cplusplus
 extern "C" {
