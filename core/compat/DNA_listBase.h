@@ -5,6 +5,10 @@
 extern "C" {
 #endif
 
+typedef struct Link {
+    struct Link *next, *prev;
+} Link;
+
 typedef struct ListBase {
     void *first, *last;
 } ListBase;
