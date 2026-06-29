@@ -15,4 +15,11 @@
 
 typedef unsigned int BLI_bitmap;
 
+#ifndef BLI_BITMAP_ENABLE
+#define BLI_BITMAP_ENABLE(bitmap, i) ((bitmap)[(i) >> 3] |= (1 << ((i) & 7)))
+#endif
+#ifndef BLI_BITMAP_DISABLE
+#define BLI_BITMAP_DISABLE(bitmap, i) ((bitmap)[(i) >> 3] &= ~(1 << ((i) & 7)))
+#endif
+
 #endif

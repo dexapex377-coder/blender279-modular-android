@@ -14,6 +14,12 @@
 #ifndef MAX
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #endif
+#define min_ii(a, b) ((a) < (b) ? (a) : (b))
+#define max_ii(a, b) ((a) > (b) ? (a) : (b))
+#define min_ff(a, b) ((a) < (b) ? (a) : (b))
+#define max_ff(a, b) ((a) > (b) ? (a) : (b))
+#define min_fff(a, b, c) min_ff(min_ff(a, b), c)
+#define GET_INT_FROM_POINTER(ptr) ((int)(intptr_t)(ptr))
 #ifndef ABS
 #define ABS(a) ((a) < 0 ? -(a) : (a))
 #endif

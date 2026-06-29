@@ -34,6 +34,15 @@ BLI_INLINE void *BLI_buffer_at(BLI_Buffer *buf, int index)
     return (char *)buf->data + (size_t)(index * buf->elem_size);
 }
 
+#ifndef BLI_buffer_declare_static
+#define BLI_buffer_declare_static(name, type, flag, count) \
+    type name##_##static_buf[count]; \
+    BLI_Buffer name = { .data = name##_##static_buf, .count = 0, .max = count, .flag = flag }
+#define BLI_buffer_append(buf, type, item) BLI_buffer_add(buf, &(type){item})
+#define BLI_buffer_empty(buf) ((buf)->count == 0)
+#define BLI_BUFFER_NOP(buf) (void)buf
+#endif
+
 #ifdef __cplusplus
 }
 #endif

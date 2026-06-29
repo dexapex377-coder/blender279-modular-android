@@ -2,6 +2,7 @@
 #define __BLI_HEAP_H__
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -20,10 +21,14 @@ void BLI_heap_insert(Heap *heap, float value, void *ptr);
 void BLI_heap_insert_or_update(Heap *heap, HeapNode **node, float value, void *ptr);
 void BLI_heap_remove(Heap *heap, HeapNode *node);
 void *BLI_heap_pop_min(Heap *heap);
+void *BLI_heap_popmin(Heap *heap);
 void *BLI_heap_peek_min(Heap *heap);
+void *BLI_heap_top(Heap *heap);
 float BLI_heap_min_value(Heap *heap);
 int BLI_heap_len(Heap *heap);
 int BLI_heap_is_empty(Heap *heap);
+float BLI_heap_node_value(HeapNode *node);
+void *BLI_heap_node_ptr(HeapNode *node);
 
 #ifdef __cplusplus
 }

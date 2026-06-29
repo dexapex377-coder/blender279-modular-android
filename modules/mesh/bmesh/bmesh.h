@@ -228,6 +228,8 @@ extern "C" {
 #include "BLI_math.h"
 #include "BLI_listbase.h"
 #include "BLI_mempool.h"
+#include "BLI_smallstack.h"
+#include "BLI_gset.h"
 #include "MEM_guardedalloc.h"
 #include "BKE_customdata.h"
 

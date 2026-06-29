@@ -58,9 +58,20 @@ typedef struct MDisps {
 #define ME_LOOSEEDGE    8
 #define ME_EDGERENDER   16
 
+/* MVert flags */
+#define ME_VSEL       (1<<1)  /* vertex select flag */
+
+/* MEdge flags */
+#define ME_ESEL       (1<<1)  /* edge select flag */
+
 /* MPoly flags */
 #define ME_SMOOTH 1
 #define ME_FACE_SEL 2
+#define ME_FSEL       (1<<1)  /* face select flag */
+
+#define ME_CDFLAG_VERT_BWEIGHT (1<<2)
+#define ME_CDFLAG_EDGE_BWEIGHT (1<<4)
+#define ME_CDFLAG_EDGE_CREASE  (1<<5)
 
 #ifdef __cplusplus
 }

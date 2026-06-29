@@ -36,6 +36,11 @@ enum {
     CD_SHAPE_KEYINDEX = 24,
     CD_SHAPEKEY = 25,
     CD_EASY = 26,
+    CD_MTEXPOLY = 27,
+    CD_MLOOPUV = 28,
+    CD_BWEIGHT = 29,
+    CD_CREASE = 30,
+    CD_MDEFORMVERT = 31,
     CD_NUM = 32,
 };
 

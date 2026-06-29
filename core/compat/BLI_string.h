@@ -3,6 +3,9 @@
 
 #include <string.h>
 #include <stdarg.h>
+#include <stdio.h>
+#define BLI_snprintf snprintf
+#define BLI_snprintf_rlen snprintf
 
 #ifdef __cplusplus
 extern "C" {

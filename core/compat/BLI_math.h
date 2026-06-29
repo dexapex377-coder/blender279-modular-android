@@ -254,6 +254,14 @@ void project_v3_v3v3(float r[3], const float v[3], const float vn[3]);
 /* Smoothing */
 void blur_interp_v3(float r[3], const float a[3], float t, int falloff);
 
+#ifndef BLI_ASSERT_UNIT_V2
+#define BLI_ASSERT_UNIT_V2(v) (void)0
+#define BLI_ASSERT_UNIT_V3(v) (void)0
+#endif
+#ifndef BLI_FOREACH_SPARSE_RANGE
+#define BLI_FOREACH_SPARSE_RANGE(idx, range) for (int idx = (range)[0]; idx < (range)[1]; idx++)
+#endif
+
 /* Map range */
 float map_range(float val, float src_min, float src_max, float dst_min, float dst_max);
 
