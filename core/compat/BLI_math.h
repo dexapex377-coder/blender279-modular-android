@@ -128,7 +128,7 @@ void mul_v2_m3v2(float r[2], const float M[3][3], const float v[2]);
 void mul_m4_m4m4(float r[4][4], const float a[4][4], const float b[4][4]);
 void mul_m3_m3m3(float r[3][3], const float a[3][3], const float b[3][3]);
 
-void invert_m4_m4(float r[4][4], const float a[4][4]);
+bool invert_m4_m4(float r[4][4], const float a[4][4]);
 void invert_m4(float m[4][4]);
 void invert_m3(float m[3][3]);
 
