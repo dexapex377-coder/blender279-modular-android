@@ -46,11 +46,7 @@
 #define UNUSED(x) x
 #endif
 #define UNUSED_VARS(...) ((void)0)
-#ifdef __GNUC__
-#define UNUSED_FUNCTION(x) x __attribute__((unused))
-#else
 #define UNUSED_FUNCTION(x) x
-#endif
 
 #define CHECK_TYPE(var, type) { typeof(var) *__tmp; __tmp = (type *)NULL; (void)__tmp; } (void)0
 #define CHECK_TYPE_PAIR(var_a, var_b) { CHECK_TYPE(var_a, typeof(var_b)); } (void)0
@@ -75,11 +71,6 @@
       for (int _i = 0; _i < (int)(sizeof(_elems) / sizeof(*_elems)); _i++) { \
           if (_elems[_i] == _a) { _result = 1; break; } } } \
     _result; })
-
-/* Generic type helpers for _Generic */
-#define _BM_GENERIC_TYPE_ELEM_NONCONST
-#define _BM_GENERIC_TYPE_ELEM_CONST const
-#define GENERIC_TYPE_ANY(elem, const_qual) const_qual typeof(elem) * : (const_qual void *)elem,
 
 /* Type checking */
 #define CHECK_TYPE_INLINE(val, type) ((void)(((type)0) != (val)))
