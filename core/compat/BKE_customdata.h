@@ -117,11 +117,6 @@ typedef unsigned long long CustomDataMask;
 
 #define CD_MASK_MESH (CD_TYPE_AS_MASK(CD_MVERT) | CD_TYPE_AS_MASK(CD_MEDGE) | CD_TYPE_AS_MASK(CD_MFACE) | CD_TYPE_AS_MASK(CD_MLOOP) | CD_TYPE_AS_MASK(CD_MPOLY))
 
-typedef struct MLoopNorSpaceArray {
-    int num_spaces;
-    void *spaces;
-} MLoopNorSpaceArray;
-
 #ifdef __cplusplus
 }
 #endif
