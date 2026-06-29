@@ -28,6 +28,8 @@
 #ifndef __BMESH_STRUCTURE_H__
 #define __BMESH_STRUCTURE_H__
 
+#include "bmesh.h"
+
 /** \file blender/bmesh/intern/bmesh_structure.h
  *  \ingroup bmesh
  *

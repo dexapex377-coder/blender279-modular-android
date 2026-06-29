@@ -28,6 +28,8 @@
 #ifndef __BMESH_PRIVATE_H__
 #define __BMESH_PRIVATE_H__
 
+#include "bmesh.h"
+
 /** \file blender/bmesh/intern/bmesh_private.h
  *  \ingroup bmesh
  *
