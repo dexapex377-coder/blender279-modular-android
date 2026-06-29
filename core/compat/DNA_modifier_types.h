@@ -34,6 +34,26 @@ typedef struct MultiresModifierData {
     int simple;
 } MultiresModifierData;
 
+typedef struct HookModifierData {
+    ModifierData modifier;
+    struct Object *object;
+    char subtarget[64];
+    short flag;
+    short falloff_type;
+    int totindex;
+    int *indexar;
+    float *weights;
+    float cent[3];
+    float falloff_rad;
+    float force;
+    float curfalloff;
+} HookModifierData;
+
+/* Modifier types */
+enum {
+    eModifierType_Hook = 18,
+};
+
 #ifdef __cplusplus
 }
 #endif

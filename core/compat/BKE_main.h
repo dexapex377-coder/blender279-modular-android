@@ -41,7 +41,7 @@ typedef struct Main {
     struct GHash *relations;
 } Main;
 
-extern Main *G.main;
+extern struct Global G;
 
 #ifdef __cplusplus
 }

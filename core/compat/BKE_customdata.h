@@ -89,7 +89,7 @@ int CustomData_data_equals(int type, const void *data1, const void *data2);
 void *CustomData_get_layer(const CustomData *data, int type);
 void *CustomData_set_layer(const CustomData *data, int type, void *ptr);
 void CustomData_set_layer_name(CustomData *data, int type, int n, const char *name);
-void CustomData_set_layer_unique_name(CustomData *data, int type, int n);
+void CustomData_set_layer_unique_name(CustomData *data, int index);
 void CustomData_add_layer(CustomData *data, int type, int flag, void *layer, int count);
 void CustomData_add_layer_named(CustomData *data, int type, int flag, void *layer, int count, const char *name);
 bool CustomData_free_layer(CustomData *data, int type, int count, int index);
@@ -112,6 +112,15 @@ void CustomData_bmesh_copy_data(CustomData *source, CustomData *dest, void *src_
 void CustomData_bmesh_init_pool(CustomData *data, int totelem, int htype);
 void CustomData_from_bmesh_block(CustomData *source, CustomData *dest, void *src_block, void **dest_block);
 void CustomData_to_bmesh_block(CustomData *source, CustomData *dest, int src_index, void **dest_block, int alloc);
+
+typedef unsigned long long CustomDataMask;
+
+#define CD_MASK_MESH (CD_TYPE_AS_MASK(CD_MVERT) | CD_TYPE_AS_MASK(CD_MEDGE) | CD_TYPE_AS_MASK(CD_MFACE) | CD_TYPE_AS_MASK(CD_MLOOP) | CD_TYPE_AS_MASK(CD_MPOLY))
+
+typedef struct MLoopNorSpaceArray {
+    int num_spaces;
+    void *spaces;
+} MLoopNorSpaceArray;
 
 #ifdef __cplusplus
 }

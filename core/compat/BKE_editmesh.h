@@ -22,7 +22,7 @@ typedef struct BMEditMesh {
     void *py_handle;
 } BMEditMesh;
 
-struct BMEditMesh *BKE_editmesh_create(struct BMesh *bm);
+struct BMEditMesh *BKE_editmesh_create(struct BMesh *bm, const bool do_tessellate);
 void BKE_editmesh_free(struct BMEditMesh *em);
 struct BMEditMesh *BKE_editmesh_from_object(struct Object *ob);
 void BKE_editmesh_update_linked_editable(struct BMEditMesh *em);

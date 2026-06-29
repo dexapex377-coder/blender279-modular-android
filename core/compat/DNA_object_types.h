@@ -4,6 +4,7 @@
 #include "DNA_listBase.h"
 #include "DNA_ID.h"
 #include "DNA_scene_types.h"
+#include "DNA_modifier_types.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,6 +26,12 @@ typedef struct Object {
     struct Object *parent;
     struct Object *track;
     ListBase constraints;
+    ListBase modifiers;
+    short partype;
+    short transflag;
+    short trackflag2;
+    short upflag2;
+    float par1, par2, par3;
     struct Mesh *data;
     struct Material **mat;
     struct bDeformGroup *defbase;
@@ -37,12 +44,19 @@ typedef struct Object {
     float parentinv[4][4];
     float constinv[4][4];
     float trackflag, upflag;
-    short partype;
-    short transflag;
-    short trackflag2;
-    short upflag2;
     struct BoundBox *bb;
 } Object;
+
+/* Parent types */
+enum {
+    PAROBJECT1 = 0,
+    PAROBJECT  = 0,
+    PARCURVE   = 1,
+    PARKEY     = 2,
+    PARVERT1   = 3,
+    PARVERT3   = 5,
+    PARBONE    = 7,
+};
 
 /* Object types */
 enum {

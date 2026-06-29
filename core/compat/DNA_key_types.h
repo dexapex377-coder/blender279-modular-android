@@ -16,21 +16,37 @@ typedef struct KeyBlock {
     float *data;
     char name[64];
     float curval;
+    int uid;
+    short relative;
+    short pad;
     float vgroup;
+    float pos[3];
 } KeyBlock;
 
 typedef struct Key {
     struct Key *next, *prev;
     struct ID id;
-    int type;
+    struct AnimData *adt;
+    KeyBlock *refkey;
+    char elemstr[32];
+    int elemsize;
+    int pad;
+    ListBase block;
+    void *ipo;
+    ID *from;
     int totkey;
-    int totelem;
-    int refkey;
+    short flag;
+    char type;
+    char pad2;
     float ctime;
-    float curval;
-    char refkey_name[64];
-    KeyBlock *blocks;
+    int uidgen;
 } Key;
+
+/* Key types */
+enum {
+    KEY_NORMAL   = 0,
+    KEY_RELATIVE = 1,
+};
 
 #ifdef __cplusplus
 }

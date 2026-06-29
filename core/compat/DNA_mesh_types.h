@@ -27,6 +27,7 @@ typedef struct Mesh {
     struct Key *key;
     struct EditMesh *edit_mesh;
     ListBase fcache;
+    int act_face;
 } Mesh;
 
 #ifdef __cplusplus
