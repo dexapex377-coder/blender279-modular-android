@@ -68,6 +68,7 @@ unsigned int BLI_ghashutil_strhash(const void *key);
 int BLI_ghashutil_strcmp(const void *a, const void *b);
 unsigned int BLI_ghashutil_ptrhash(const void *key);
 int BLI_ghashutil_ptrcmp(const void *a, const void *b);
+unsigned int BLI_ghashutil_uinthash_v4(const unsigned int key[4]);
 unsigned int BLI_ghashutil_inthash_v4(const void *key);
 int BLI_ghashutil_inthash_v4_cmp(const void *a, const void *b);
 unsigned int BLI_ghashutil_inthash_p_simple(const void *key);

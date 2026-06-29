@@ -24,6 +24,10 @@
 /* Unpack array elements */
 #define UNPACK2(a) ((a)[0]), ((a)[1])
 #define UNPACK3(a) ((a)[0]), ((a)[1]), ((a)[2])
+#define UNPACK4(a) ((a)[0]), ((a)[1]), ((a)[2]), ((a)[3])
+#define UNPACK2_EX(pre, a, post) (pre((a)[0])post), (pre((a)[1])post)
+#define UNPACK3_EX(pre, a, post) UNPACK2_EX(pre, a, post), (pre((a)[2])post)
+#define UNPACK4_EX(pre, a, post) UNPACK3_EX(pre, a, post), (pre((a)[3])post)
 #ifndef ABS
 #define ABS(a) ((a) < 0 ? -(a) : (a))
 #endif
