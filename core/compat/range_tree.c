@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <limits.h>
+#include <string.h>
 #include "range_tree.h"
 
 struct RangeTreeUInt {

@@ -25,6 +25,8 @@
 #ifndef __RANGE_TREE_H__
 #define __RANGE_TREE_H__
 
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
