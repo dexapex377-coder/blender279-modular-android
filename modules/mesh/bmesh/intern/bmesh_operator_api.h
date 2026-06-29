@@ -23,10 +23,38 @@ typedef enum eBMOpSlotType {
 	BMO_SLOT_BUFFER,
 	BMO_SLOT_GHASH,
 	BMO_SLOT_PTR,
+	BMO_SLOT_ELEM,
+	BMO_SLOT_MAPPING,
 } eBMOpSlotType;
+#define BMO_OP_SLOT_TOTAL_TYPES 11
 
-typedef enum eBMOpSlotSubType_Union {
-	BMO_SLOT_SUB_NONE = 0,
+typedef enum eBMOpSlotSubType_Elem {
+	BMO_OP_SLOT_SUBTYPE_ELEM_VERT = BM_VERT,
+	BMO_OP_SLOT_SUBTYPE_ELEM_EDGE = BM_EDGE,
+	BMO_OP_SLOT_SUBTYPE_ELEM_FACE = BM_FACE,
+	BMO_OP_SLOT_SUBTYPE_ELEM_IS_SINGLE = (BM_FACE << 1),
+} eBMOpSlotSubType_Elem;
+
+typedef enum eBMOpSlotSubType_Map {
+	BMO_OP_SLOT_SUBTYPE_MAP_EMPTY    = 64,
+	BMO_OP_SLOT_SUBTYPE_MAP_ELEM     = 65,
+	BMO_OP_SLOT_SUBTYPE_MAP_FLT      = 66,
+	BMO_OP_SLOT_SUBTYPE_MAP_INT      = 67,
+	BMO_OP_SLOT_SUBTYPE_MAP_BOOL     = 68,
+	BMO_OP_SLOT_SUBTYPE_MAP_INTERNAL = 69,
+} eBMOpSlotSubType_Map;
+
+typedef enum eBMOpSlotSubType_Ptr {
+	BMO_OP_SLOT_SUBTYPE_PTR_BMESH  = 100,
+	BMO_OP_SLOT_SUBTYPE_PTR_SCENE  = 101,
+	BMO_OP_SLOT_SUBTYPE_PTR_OBJECT = 102,
+	BMO_OP_SLOT_SUBTYPE_PTR_MESH   = 103,
+} eBMOpSlotSubType_Ptr;
+
+typedef union eBMOpSlotSubType_Union {
+	eBMOpSlotSubType_Elem elem;
+	eBMOpSlotSubType_Ptr ptr;
+	eBMOpSlotSubType_Map map;
 } eBMOpSlotSubType_Union;
 
 typedef struct BMOpSlot {
@@ -57,10 +85,11 @@ typedef struct BMOpSlot {
 	           ((slot >= (op)->slots_out) && (slot < &(op)->slots_out[BMO_OP_MAX_SLOTS])))
 
 typedef enum BMOpTypeFlag {
-	BMO_OPTYPE_FLAG_USE_MESH_SELECT = (1 << 0),
-	BMO_OPTYPE_FLAG_NORMALS_CALC    = (1 << 1),
-	BMO_OPTYPE_FLAG_SELECT_FLUSH    = (1 << 2),
-	BMO_OPTYPE_FLAG_SELECT_VALIDATE = (1 << 3),
+	BMO_OPTYPE_FLAG_NOP                 = 0,
+	BMO_OPTYPE_FLAG_UNTAN_MULTIRES      = (1 << 0),
+	BMO_OPTYPE_FLAG_NORMALS_CALC        = (1 << 1),
+	BMO_OPTYPE_FLAG_SELECT_FLUSH        = (1 << 2),
+	BMO_OPTYPE_FLAG_SELECT_VALIDATE     = (1 << 3),
 } BMOpTypeFlag;
 
 typedef struct BMOperator {
@@ -73,6 +102,10 @@ typedef struct BMOperator {
 	int flag;
 } BMOperator;
 
+enum {
+	BMO_FLAG_RESPECT_HIDE = 1,
+};
+
 typedef enum BMO_Delimit {
     BMO_DELIM_NORMAL = 1 << 0,
     BMO_DELIM_MATERIAL = 1 << 1,
@@ -81,11 +114,6 @@ typedef enum BMO_Delimit {
     BMO_DELIM_UV = 1 << 4,
 } BMO_Delimit;
 
-enum {
-	BMO_FLAG_RESPECT_HIDE = 1,
-};
-
-/* del "context" slot values, used for operator too */
 enum {
 	DEL_VERTS = 1,
 	DEL_EDGES,
@@ -122,6 +150,14 @@ typedef struct BMOpDefine {
 	BMOpTypeFlag type_flag;
 } BMOpDefine;
 
+typedef struct BMOIter {
+	BMOpSlot *slot;
+	int cur;
+	GHashIterator giter;
+	void **val;
+	char restrictmask;
+} BMOIter;
+
 void BMO_op_init(BMesh *bm, BMOperator *op, const int flag, const char *opname);
 void BMO_op_exec(BMesh *bm, BMOperator *op);
 void BMO_op_finish(BMesh *bm, BMOperator *op);
@@ -141,20 +177,9 @@ void *BMO_slot_as_arrayN(BMOpSlot slot_args[], const char *slot_name, int *len);
 void BMO_slot_ptr_set(BMOpSlot slot_args[], const char *slot_name, void *p);
 void *BMO_slot_ptr_get(BMOpSlot slot_args[], const char *slot_name);
 
-/* Iterator */
-typedef struct BMOIter {
-    BMOpSlot *slot;
-    int cur;
-    GHashIterator giter;
-    void **val;
-    char restrictmask;
-} BMOIter;
-
-void *BMO_slot_buffer_get_first(BMOpSlot slot_args[BMO_OP_MAX_SLOTS], const char *slot_name);
-
 void *BMO_iter_new(
         BMOIter *iter,
-        BMOpSlot slot_args[BMO_OP_MAX_SLOTS], const char *slot_name,
+        BMOpSlot slot_args[], const char *slot_name,
         const char restrictmask);
 void *BMO_iter_step(BMOIter *iter);
 
@@ -164,6 +189,18 @@ void  *BMO_iter_map_value_ptr(BMOIter *iter);
 float BMO_iter_map_value_float(BMOIter *iter);
 int   BMO_iter_map_value_int(BMOIter *iter);
 bool  BMO_iter_map_value_bool(BMOIter *iter);
+
+void *BMO_slot_buffer_get_first(BMOpSlot slot_args[], const char *slot_name);
+
+#define BMO_ITER(ele, iter, slot_args, slot_name, restrict_flag)   \
+	for (BM_CHECK_TYPE_ELEM_ASSIGN(ele) = BMO_iter_new(iter, slot_args, slot_name, restrict_flag); \
+	     ele; \
+	     BM_CHECK_TYPE_ELEM_ASSIGN(ele) = BMO_iter_step(iter))
+
+#define BMO_ITER_INDEX(ele, iter, slot_args, slot_name, restrict_flag, i_)   \
+	for (BM_CHECK_TYPE_ELEM_ASSIGN(ele) = BMO_iter_new(iter, slot_args, slot_name, restrict_flag), i_ = 0; \
+	     ele; \
+	     BM_CHECK_TYPE_ELEM_ASSIGN(ele) = BMO_iter_step(iter), i_++)
 
 #ifdef __cplusplus
 }
