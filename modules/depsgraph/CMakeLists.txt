@@ -52,7 +52,7 @@ set(DEPSGRAPH_NODES_SRCS
 )
 
 set(DEPSGRAPH_DEBUG_SRCS
-    ${CMAKE_CURRENT_SOURCE_DIR}/debug/depsgraph_debug.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/debug/deg_debug_graphviz.cc
 )
 
 set(DEPSGRAPH_MODULE_SRCS
