@@ -1,7 +1,7 @@
 #ifndef __BMESH_OPERATOR_API_H__
 #define __BMESH_OPERATOR_API_H__
 
-#include "BLI_listBase.h"
+#include "BLI_listbase.h"
 
 #ifdef __cplusplus
 extern "C" {
