@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "BLI_math_matrix.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
