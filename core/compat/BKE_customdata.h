@@ -82,7 +82,7 @@ int CustomData_number_of_layers(const CustomData *data, int type);
 int CustomData_has_layer(const CustomData *data, int type);
 int CustomData_has_interp(const CustomData *data, int type);
 bool CustomData_has_math(const CustomData *data);
-int CustomData_layer_has_math(const CustomData *data, int type, int n);
+bool CustomData_layer_has_math(const CustomData *data, int layer_n);
 int CustomData_sizeof(int type);
 int CustomData_data_equals(int type, const void *data1, const void *data2);
 

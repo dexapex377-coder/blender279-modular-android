@@ -5,6 +5,52 @@
 
 #include "BLI_linklist.h"
 #include "BLI_compiler_attrs.h"
+#include "BLI_mempool.h"
+
+/* Linked Stack (mempool) - for when you want to use mempool allocation instead of alloca */
+#define BLI_LINKSTACK_DECLARE(var, type) \
+	LinkNode *var; \
+	BLI_mempool *var##_pool_; \
+	type var##_type_
+
+#define BLI_LINKSTACK_INIT(var)  { \
+	var = NULL; \
+	var##_pool_ = BLI_mempool_create(sizeof(LinkNode), 0, 64, BLI_MEMPOOL_NOP); \
+} (void)0
+
+#define BLI_LINKSTACK_SIZE(var) \
+	BLI_mempool_count(var##_pool_)
+
+#ifdef __GNUC__
+#define BLI_LINKSTACK_PUSH(var, ptr)  ( \
+	CHECK_TYPE_INLINE(ptr, typeof(var##_type_)), \
+	BLI_linklist_prepend_pool(&(var), ptr, var##_pool_))
+#define BLI_LINKSTACK_POP(var) \
+	(var ? (typeof(var##_type_))BLI_linklist_pop_pool(&(var), var##_pool_) : NULL)
+#define BLI_LINKSTACK_POP_DEFAULT(var, r) \
+	(var ? (typeof(var##_type_))BLI_linklist_pop_pool(&(var), var##_pool_) : r)
+#else
+#define BLI_LINKSTACK_PUSH(var, ptr)  ( \
+	BLI_linklist_prepend_pool(&(var), ptr, var##_pool_))
+#define BLI_LINKSTACK_POP(var) \
+	(var ? BLI_linklist_pop_pool(&(var), var##_pool_) : NULL)
+#define BLI_LINKSTACK_POP_DEFAULT(var, r) \
+	(var ? BLI_linklist_pop_pool(&(var), var##_pool_) : r)
+#endif
+
+#define BLI_LINKSTACK_SWAP(var_a, var_b)  { \
+	CHECK_TYPE_PAIR(var_a##_type_, var_b##_type_); \
+	SWAP(LinkNode *, var_a, var_b); \
+	SWAP(BLI_mempool *, var_a##_pool_, var_b##_pool_); \
+} (void)0
+
+#define BLI_LINKSTACK_FREE(var)  { \
+	BLI_mempool_destroy(var##_pool_); \
+	var##_pool_ = NULL; (void)var##_pool_; \
+	var = NULL; (void)var; \
+	(void)&(var##_type_); \
+} (void)0
+
 
 #ifdef __GNUC__
 #  define _BLI_SMALLSTACK_CAST(var) (typeof(_##var##_type))

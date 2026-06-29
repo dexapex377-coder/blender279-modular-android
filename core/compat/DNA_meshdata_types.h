@@ -21,6 +21,11 @@ typedef struct MLoop {
     unsigned int e;
 } MLoop;
 
+typedef struct MLoopUV {
+    float uv[2];
+    int flag;
+} MLoopUV;
+
 typedef struct MPoly {
     int loopstart;
     int totloop;

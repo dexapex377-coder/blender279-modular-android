@@ -13,6 +13,13 @@ extern "C" {
 #endif
 #define M_PI_2 1.57079632679489661923
 
+#ifndef M_SQRT3
+#define M_SQRT3     1.73205080756887729352  /* sqrt(3) */
+#endif
+#ifndef M_SQRT1_3
+#define M_SQRT1_3   0.57735026918962576450  /* 1/sqrt(3) */
+#endif
+
 /* Vector math */
 void zero_v2(float r[2]);
 void zero_v3(float r[3]);
