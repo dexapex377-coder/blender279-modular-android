@@ -224,6 +224,12 @@ extern "C" {
 #include <stdio.h>
 #include <assert.h>
 
+#include "BLI_utildefines.h"
+#include "BLI_math.h"
+#include "BLI_listbase.h"
+#include "BLI_mempool.h"
+#include "MEM_guardedalloc.h"
+
 #include "bmesh_class.h"
 
 /* include the rest of the API */

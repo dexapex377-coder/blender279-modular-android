@@ -1,6 +1,8 @@
 #ifndef __DNA_KEY_TYPES_H__
 #define __DNA_KEY_TYPES_H__
 
+#include "DNA_ID.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
