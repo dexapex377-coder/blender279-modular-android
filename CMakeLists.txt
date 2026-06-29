@@ -113,6 +113,9 @@ add_subdirectory(modules/mesh)
 # Depsgraph module
 add_subdirectory(modules/depsgraph)
 
+# Anim module
+add_subdirectory(modules/anim)
+
 # Render plugin
 set(RENDER_SRCS
     plugins/render/BLE_render_module.c
