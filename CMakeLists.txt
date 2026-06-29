@@ -59,31 +59,8 @@ set(CORE_SRCS
     core/BLE_core_dna.c
 )
 
-# GPU backend sources
-set(GPU_COMMON_SRCS
-    core/gpu/gpu_init_exit.c
-    core/gpu/gpu_immediate_util.c
-    core/gpu/gpu_select.c
-    core/gpu/gpu_select_pick.c
-    core/gpu/gpu_viewport.c
-)
-
-set(GPU_OPENGL_SRCS
-    core/gpu/opengl/gl_backend.cc
-    core/gpu/opengl/gl_batch.cc
-    core/gpu/opengl/gl_context.cc
-    core/gpu/opengl/gl_drawlist.cc
-    core/gpu/opengl/gl_framebuffer.cc
-    core/gpu/opengl/gl_immediate.cc
-    core/gpu/opengl/gl_index_buffer.cc
-    core/gpu/opengl/gl_shader.cc
-    core/gpu/opengl/gl_shader_interface.cc
-    core/gpu/opengl/gl_state.cc
-    core/gpu/opengl/gl_texture.cc
-    core/gpu/opengl/gl_uniform_buffer.cc
-    core/gpu/opengl/gl_vertex_array.cc
-    core/gpu/opengl/gl_vertex_buffer.cc
-)
+# GPU backend sources (disabled - needs Blender 3.6 headers from epai)
+# TODO: Re-enable with compat layer
 
 # Render engine plugin sources
 set(RENDER_PLUGIN_SRCS
@@ -95,8 +72,6 @@ set(RENDER_PLUGIN_SRCS
 # Include directories (before add_library so modules inherit them)
 include_directories(
     core
-    core/gpu
-    core/gpu/opengl
     modules/tools
     plugins/render
     .
@@ -106,8 +81,6 @@ include_directories(
 add_library(blender279_modular SHARED
     main.c
     ${CORE_SRCS}
-    ${GPU_COMMON_SRCS}
-    ${GPU_OPENGL_SRCS}
     ${RENDER_PLUGIN_SRCS}
 )
 

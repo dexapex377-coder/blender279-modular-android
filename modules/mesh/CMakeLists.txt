@@ -139,7 +139,6 @@ target_include_directories(blender279_modular PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/modifiers
     ${CMAKE_CURRENT_SOURCE_DIR}/derivedmesh
     ${CMAKE_SOURCE_DIR}/core
-    ${CMAKE_SOURCE_DIR}/core/gpu
 )
 
 # Add to main library

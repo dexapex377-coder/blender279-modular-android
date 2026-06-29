@@ -11,11 +11,6 @@ set(RENDER_INTERNAL_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/initrender.c
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/multires_bake.c
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/occlusion.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/imagetexture.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/imagetexture.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/initrender.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/multires_bake.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/occlusion.c
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/pipeline.c
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/pixelblending.c
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/pixelshading.c
@@ -45,35 +40,6 @@ set(RENDER_INTERNAL_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/rayobject_rtbuild.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/rayobject_svbvh.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/internal/rayobject_vbvh.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/rayshade.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/render_result.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/render_texture.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/rendercore.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/renderdatabase.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/shadbuf.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/shadeinput.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/shadeoutput.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/sss.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/strand.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/sunsky.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/texture_ocean.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/volume_precache.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/volumetric.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/voxeldata.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/zbuf.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/bake.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/bake_api.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/convertblender.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/envmap.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/external_engine.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/imagetexture.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/initrender.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/multires_bake.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/pipeline.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/pixelblending.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/pixelshading.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/pointdensity.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/internal/rayshade.c
 )
 
 # Cycles
@@ -116,7 +82,6 @@ target_include_directories(blender279_modular PRIVATE
     ${CMAKE_SOURCE_DIR}/modules/depsgraph
     ${CMAKE_SOURCE_DIR}/modules/anim
     ${CMAKE_SOURCE_DIR}/modules/physics
-    ${CMAKE_SOURCE_DIR}/core/gpu
 )
 
 target_sources(blender279_modular PRIVATE ${RENDER_ALL_SRCS})
