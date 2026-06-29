@@ -1,0 +1,64 @@
+#ifndef __DNA_OBJECT_TYPES_H__
+#define __DNA_OBJECT_TYPES_H__
+
+#include "DNA_listBase.h"
+#include "DNA_scene_types.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+typedef struct Object {
+    struct Object *next, *prev;
+    struct ID id;
+    int type;
+    int flag;
+    int mode;
+    int restrictflag;
+    float loc[3];
+    float rot[3];
+    float scale[3];
+    float dscale[3];
+    float drot[3];
+    float dloc[3];
+    struct Object *parent;
+    struct Object *track;
+    ListBase constraints;
+    struct Mesh *data;
+    struct Material **mat;
+    struct bDeformGroup *defbase;
+    int totcol;
+    int actcol;
+    int colbits;
+    short *matbits;
+    float imat[4][4];
+    float obmat[4][4];
+    float parentinv[4][4];
+    float constinv[4][4];
+    float trackflag, upflag;
+    short partype;
+    short transflag;
+    short trackflag2;
+    short upflag2;
+    struct BoundBox *bb;
+} Object;
+
+/* Object types */
+enum {
+    OB_EMPTY = 0,
+    OB_MESH = 1,
+    OB_CURVE = 2,
+    OB_SURF = 3,
+    OB_FONT = 4,
+    OB_MBALL = 5,
+    OB_LAMP = 10,
+    OB_CAMERA = 11,
+    OB_WAVE = 21,
+    OB_LATTICE = 22,
+};
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

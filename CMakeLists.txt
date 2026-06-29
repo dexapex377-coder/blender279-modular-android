@@ -72,6 +72,7 @@ set(RENDER_PLUGIN_SRCS
 # Include directories (before add_library so modules inherit them)
 include_directories(
     core
+    core/compat
     modules/tools
     plugins/render
     .

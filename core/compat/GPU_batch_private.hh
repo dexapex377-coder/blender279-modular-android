@@ -1,0 +1,7 @@
+#ifndef __GPU_BATCH_PRIVATE_HH__
+#define __GPU_BATCH_PRIVATE_HH__
+
+#define GPU_BATCH_INSTANCED 1
+#define GPU_BATCH_INDEXED 2
+
+#endif
