@@ -229,6 +229,7 @@ extern "C" {
 #include "BLI_listbase.h"
 #include "BLI_mempool.h"
 #include "MEM_guardedalloc.h"
+#include "BKE_customdata.h"
 
 #include "bmesh_class.h"
 

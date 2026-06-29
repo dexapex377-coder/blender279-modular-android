@@ -25,7 +25,7 @@ typedef struct {
     void *ptr;
 } SortPtrByInt;
 
-typedef struct {
+typedef struct SortIntByFloat {
     float sort_value;
     int data;
 } SortIntByFloat;
