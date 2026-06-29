@@ -20,6 +20,7 @@ typedef struct Global {
     short moving;
     bool is_rendering;
     short debug_value;
+    int debug;
 } Global;
 
 extern Global G;
@@ -27,6 +28,7 @@ extern Global G;
 /* Global flags */
 #define G_MOVING 1
 #define G_RENDER 2
+#define G_DEBUG 1
 
 #ifdef __cplusplus
 }

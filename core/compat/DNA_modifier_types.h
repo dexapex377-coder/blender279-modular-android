@@ -243,6 +243,33 @@ typedef struct ShapeKeyModifierData {
     short pad;
 } ShapeKeyModifierData;
 
+typedef struct BooleanModifierData {
+    ModifierData modifier;
+    struct Object *object;
+    char operation;
+    char solver;
+    char pad[2];
+    float double_threshold;
+    int bm_flag;
+} BooleanModifierData;
+
+typedef enum {
+    eBooleanModifierOp_Intersect  = 0,
+    eBooleanModifierOp_Union      = 1,
+    eBooleanModifierOp_Difference = 2,
+} BooleanModifierOp;
+
+typedef enum {
+    eBooleanModifierSolver_Carve    = 0,
+    eBooleanModifierSolver_BMesh = 1,
+} BooleanSolver;
+
+enum {
+    eBooleanModifierBMeshFlag_BMesh_Separate        = (1 << 0),
+    eBooleanModifierBMeshFlag_BMesh_NoDissolve      = (1 << 1),
+    eBooleanModifierBMeshFlag_BMesh_NoConnectRegions = (1 << 2),
+};
+
 /* TriangulateModifier flags (deprecated) */
 #ifdef DNA_DEPRECATED
 enum {

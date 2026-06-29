@@ -1,0 +1,4 @@
+#ifndef __BLI_COMPILER_TYPECHECK_H__
+#define __BLI_COMPILER_TYPECHECK_H__
+
+#endif
