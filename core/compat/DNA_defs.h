@@ -82,7 +82,7 @@
 
 #define ID_NAME_LEN 66
 
-#define MAX_ID_NAME 66
+#define MAX_NAME 64
 #define MAX_ID_NAME_LONG 256
 #define MAX_ID_FILEPATH 1024
 

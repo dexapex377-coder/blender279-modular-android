@@ -33,6 +33,9 @@ typedef struct CustomDataExternal {
     CustomDataLayer *layers;
 } CustomDataExternal;
 
+#define MAX_MTFACE 8
+#define MAX_MCOL 8
+
 #ifdef __cplusplus
 }
 #endif

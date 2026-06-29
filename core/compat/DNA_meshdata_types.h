@@ -44,6 +44,15 @@ typedef struct MSelect {
     int type;
 } MSelect;
 
+typedef struct MLoopTri {
+    unsigned int tri[3];
+    unsigned int poly;
+} MLoopTri;
+
+typedef struct MVertTri {
+    unsigned int tri[3];
+} MVertTri;
+
 typedef struct MDisps {
     int totdisp;
     int level;
