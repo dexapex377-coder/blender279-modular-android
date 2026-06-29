@@ -1,6 +1,7 @@
 #ifndef __BLI_GHASH_H__
 #define __BLI_GHASH_H__
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -38,7 +39,7 @@ void **BLI_ghash_lookup_p(GHash *gh, const void *key);
 int BLI_ghash_haskey(GHash *gh, const void *key);
 void *BLI_ghash_popkey(GHash *gh, const void *key, GHashKeyFreeFP keyfreefp);
 void *BLI_ghash_ensure_p(GHash *gh, void *key, void ***r_val);
-void BLI_ghash_remove(GHash *gh, void *key, GHashKeyFreeFP keyfreefp, GHashValFreeFP valfreefp);
+bool BLI_ghash_remove(GHash *gh, void *key, GHashKeyFreeFP keyfreefp, GHashValFreeFP valfreefp);
 void BLI_ghash_reinsert(GHash *gh, void *key, void *val, GHashKeyFreeFP keyfreefp, GHashValFreeFP valfreefp);
 void BLI_ghash_reserve(GHash *gh, unsigned int nbr_reserve);
 void BLI_ghash_clear(GHash *gh, GHashKeyFreeFP keyfreefp, GHashValFreeFP valfreefp);
