@@ -34,19 +34,11 @@ void BLI_freelistN(ListBase *listbase);
 void *BLI_findlink(const ListBase *listbase, int number);
 int BLI_findindex(const ListBase *listbase, const void *vlink);
 void BLI_movelisttolist(ListBase *dst, ListBase *src);
-void *BLI_findptr(const ListBase *list, const void *ptr, int offset);
-void BLI_freelinkN(ListBase *list, void *vlink);
-void BLI_duplicatelist(ListBase *dest, const ListBase *src);
-void *BLI_pophead(ListBase *list);
-void *BLI_genericNodeN(const void *data);
-void BLI_listbase_reverse(ListBase *lb);
-void BLI_listbase_sort(ListBase *lb, int (*cmp)(const void *, const void *));
-
 #ifdef __cplusplus
 }
 #endif
 
-/* Inline stubs for implementations */
+/* Inline stubs */
 BLI_INLINE void *BLI_findptr(const ListBase *list, const void *ptr, int offset) { (void)list; (void)ptr; (void)offset; return NULL; }
 BLI_INLINE void BLI_freelinkN(ListBase *list, void *vlink) { BLI_remlink(list, vlink); MEM_freeN(vlink); }
 BLI_INLINE void BLI_duplicatelist(ListBase *dest, const ListBase *src) { (void)dest; (void)src; }
