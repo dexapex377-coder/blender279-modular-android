@@ -9,7 +9,12 @@ extern "C" {
 #endif
 
 typedef struct GHash GHash;
-typedef struct GHashIterator GHashIterator;
+typedef struct GHashIterator {
+    GHash *gh;
+    int cur;
+    void *curEntry;
+    int curBucket;
+} GHashIterator;
 
 typedef unsigned int (*GHashHashFP)(const void *key);
 typedef int (*GHashCmpFP)(const void *a, const void *b);
