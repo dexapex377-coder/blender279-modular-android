@@ -13,11 +13,6 @@ extern "C" {
 #define BLI_listbase_count(list) _bli_listbase_count(list)
 
 /* Standard linked list node types */
-typedef struct LinkNode {
-    struct LinkNode *next;
-    void *link;
-} LinkNode;
-
 typedef struct LinkData {
     struct LinkData *next, *prev;
     void *data;
