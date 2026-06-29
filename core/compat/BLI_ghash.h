@@ -72,6 +72,7 @@ unsigned int BLI_ghashutil_uinthash_v4(const unsigned int key[4]);
 unsigned int BLI_ghashutil_inthash_v4(const void *key);
 int BLI_ghashutil_inthash_v4_cmp(const void *a, const void *b);
 unsigned int BLI_ghashutil_inthash_p_simple(const void *key);
+int BLI_ghashutil_uinthash_v4_cmp(const void *a, const void *b);
 
 #define BLI_ghashutil_inthash_v4_p ((GHashHashFP)BLI_ghashutil_uinthash_v4)
 #define BLI_ghashutil_uinthash_v4_p ((GHashHashFP)BLI_ghashutil_uinthash_v4)
