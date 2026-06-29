@@ -10,8 +10,13 @@ extern "C" {
 typedef struct ModifierData {
     struct ModifierData *next, *prev;
     int type, mode;
-    int flag;
-    char name[64];
+    int stackindex, pad;
+    char name[64];  /* MAX_NAME */
+
+    /* XXX for timing info set by caller... solve later? (ton) */
+    struct Scene *scene;
+
+    char *error;
 } ModifierData;
 
 typedef struct SubsurfModifierData {
@@ -118,19 +123,6 @@ typedef enum ModifierMode {
 	eModifierMode_ApplyOnSpline     = (1 << 6),
 	eModifierMode_DisableTemporary  = (1u << 31)
 } ModifierMode;
-
-typedef struct ModifierData {
-    struct ModifierData *next, *prev;
-
-    int type, mode;
-    int stackindex, pad;
-    char name[64];  /* MAX_NAME */
-
-    /* XXX for timing info set by caller... solve later? (ton) */
-    struct Scene *scene;
-
-    char *error;
-} ModifierData;
 
 typedef struct ArmatureModifierData {
     ModifierData modifier;
