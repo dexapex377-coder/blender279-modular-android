@@ -67,6 +67,9 @@ enum {
 /* BMesh mask includes all standard mesh layers */
 #define CD_MASK_BMESH ((1 << CD_NUM) - 1)
 
+#define CD_MASK_MDEFORMVERT (1 << CD_MDEFORMVERT)
+
+
 /* Special index value for original indices */
 #define ORIGINDEX_NONE -1
 
