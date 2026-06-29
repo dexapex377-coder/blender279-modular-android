@@ -2,10 +2,15 @@
 #define __BKE_LIBRARY_QUERY_H__
 
 #include "DNA_ID.h"
+#include "BKE_main.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+enum {
+    IDWALK_CB_NOP = 0,
+};
 
 void BKE_library_query_foreach_id(Main *bmain, void *userdata, bool (*callback)(void *userdata, ID *id));
 

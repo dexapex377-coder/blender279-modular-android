@@ -5,6 +5,22 @@
 extern "C" {
 #endif
 
+/* CustomData types */
+enum {
+    CD_MVERT = 0,
+    CD_MEDGE = 1,
+    CD_MFACE = 2,
+    CD_MLOOP = 3,
+    CD_MPOLY = 4,
+    CD_MTFACE = 5,
+    CD_MCOL = 6,
+    CD_ORIGINDEX = 7,
+    CD_NORMAL = 8,
+    CD_MDEFORMVERT = 13,
+};
+
+#define CD_MASK_MDEFORMVERT (1 << CD_MDEFORMVERT)
+
 typedef struct CustomDataLayer {
     int type;
     int offset;

@@ -1,7 +1,7 @@
 #ifndef __DEPSGRAPH_PRIVATE_H__
 #define __DEPSGRAPH_PRIVATE_H__
 
-#include "DNA_ID.h"
+#include "BKE_main.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,8 +11,8 @@ typedef struct Depsgraph Depsgraph;
 typedef struct DepsNode DepsNode;
 typedef struct DepsRelation DepsRelation;
 
-void DEG_id_type_tag(Depsgraph *depsgraph, int id_type);
-void DEG_relations_tag_update(Depsgraph *depsgraph);
+void DEG_id_type_tag(struct Main *bmain, int id_type);
+void DEG_relations_tag_update(struct Main *bmain);
 
 #ifdef __cplusplus
 }

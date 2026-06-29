@@ -126,13 +126,12 @@ typedef enum ModifierMode {
 
 typedef struct ArmatureModifierData {
     ModifierData modifier;
-    struct Armature *object;
-    short flag;
-    short mode;
-    int limit;
-    short use_deform_preserve_volume;
-    short pad;
-    float mult;
+
+    short deformflag, multi;
+    int pad2;
+    struct Object *object;
+    float *prevCos;
+    char defgrp_name[64];
 } ArmatureModifierData;
 
 typedef struct CurveModifierData {

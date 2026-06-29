@@ -21,6 +21,13 @@ typedef struct Armature {
 
 typedef struct ArmatureModifierData ArmatureModifierData;
 
+/* Armature modifier deformflag */
+enum {
+    ARM_DEF_VGROUP    = (1<<0),
+    ARM_DEF_MULTI     = (1<<1),
+    ARM_DEF_DVERT     = (1<<2),
+};
+
 #ifdef __cplusplus
 }
 #endif
