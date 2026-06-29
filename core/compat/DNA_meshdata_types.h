@@ -61,15 +61,22 @@ typedef struct MDisps {
 #define ME_SHARP        1   /* same as ME_EDGEDRAW in 2.79 */
 
 /* MVert flags */
-#define ME_VSEL       (1<<1)  /* vertex select flag */
+#define ME_VERT_SEL   (1<<1)  /* vertex select flag */
 
 /* MEdge flags */
-#define ME_ESEL       (1<<1)  /* edge select flag */
+#define ME_EDGE_SEL   (1<<1)  /* edge select flag */
 
 /* MPoly flags */
 #define ME_SMOOTH 1
 #define ME_FACE_SEL 2
-#define ME_FSEL       (1<<1)  /* face select flag */
+#define ME_FACE_FLAG_SEL   (1<<1)  /* face select flag */
+
+/* mselect->type */
+enum {
+    ME_VSEL = 0,
+    ME_ESEL = 1,
+    ME_FSEL = 2,
+};
 
 #define ME_CDFLAG_VERT_BWEIGHT (1<<2)
 #define ME_CDFLAG_EDGE_BWEIGHT (1<<4)

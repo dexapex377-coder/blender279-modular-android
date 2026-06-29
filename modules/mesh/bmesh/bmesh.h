@@ -232,6 +232,7 @@ extern "C" {
 #include "BLI_gset.h"
 #include "MEM_guardedalloc.h"
 #include "BKE_customdata.h"
+#include "DNA_global_types.h"
 
 /* Disable C11 _Generic to avoid complex GENERIC_TYPE_ANY macro dependency */
 #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L)
