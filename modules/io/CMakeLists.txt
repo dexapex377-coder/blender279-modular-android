@@ -1,0 +1,187 @@
+# IO Module CMakeLists.txt
+
+set(IO_BLENLOADER_SRCS
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/readblenentry.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/readfile.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/runtime.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/undofile.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/versioning_250.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/versioning_260.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/versioning_270.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/versioning_defaults.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/versioning_legacy.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader/writefile.c
+)
+
+set(IO_MAKESRNA_SRCS
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/makesrna.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_access.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_action.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_action_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_actuator.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_actuator_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_animation.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_animation_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_animviz.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_armature.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_armature_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_boid.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_brush.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_cachefile.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_camera.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_camera_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_cloth.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_color.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_constraint.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_context.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_controller.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_controller_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_curve.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_curve_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_define.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_depsgraph.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_dynamicpaint.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_fcurve.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_fcurve_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_fluidsim.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_gpencil.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_group.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_image.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_image_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_key.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_lamp.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_lattice.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_lattice_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_linestyle.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_main.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_main_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_mask.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_material.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_material_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_mesh.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_mesh_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_meta.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_meta_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_modifier.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_movieclip.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_nla.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_nodetree.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_object.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_object_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_object_force.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_packedfile.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_palette.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_particle.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_pose.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_pose_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_property.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_render.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_rigidbody.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_rna.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_scene.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_scene_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_screen.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_sculpt_paint.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_sensor.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_sensor_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_sequencer.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_sequencer_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_smoke.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_sound.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_sound_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_space.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_space_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_speaker.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_test.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_text.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_text_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_texture.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_texture_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_timeline.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_tracking.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_ui.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_ui_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_userdef.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_vfont.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_vfont_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_wm.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_wm_api.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna/rna_world.c
+)
+
+set(IO_ALEMBIC_SRCS
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_archive.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_camera.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_curves.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_customdata.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_exporter.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_hair.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_mesh.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_nurbs.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_object.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_points.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_transform.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/abc_util.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic/alembic_capi.cc
+)
+
+set(IO_COLLADA_SRCS
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/AnimationExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/AnimationImporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ArmatureExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ArmatureImporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/CameraExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ControllerExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/DocumentExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/DocumentImporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/EffectExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ErrorHandler.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ExportSettings.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ExtraHandler.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ExtraTags.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/GeometryExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ImageExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/ImportSettings.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/InstanceWriter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/LightExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/MaterialExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/MeshImporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/SceneExporter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/SkinInfo.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/TransformReader.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/TransformWriter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/collada.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/collada_internal.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada/collada_utils.cpp
+)
+
+set(IO_ALL_SRCS
+    ${IO_BLENLOADER_SRCS}
+    ${IO_MAKESRNA_SRCS}
+    ${IO_ALEMBIC_SRCS}
+    ${IO_COLLADA_SRCS}
+)
+
+target_include_directories(blender279_modular PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/blenloader
+    ${CMAKE_CURRENT_SOURCE_DIR}/makesrna
+    ${CMAKE_CURRENT_SOURCE_DIR}/alembic
+    ${CMAKE_CURRENT_SOURCE_DIR}/collada
+    ${CMAKE_SOURCE_DIR}/core
+    ${CMAKE_SOURCE_DIR}/modules/mesh
+    ${CMAKE_SOURCE_DIR}/modules/depsgraph
+    ${CMAKE_SOURCE_DIR}/modules/anim
+    ${CMAKE_SOURCE_DIR}/modules/physics
+    ${CMAKE_SOURCE_DIR}/modules/render
+)
+
+target_sources(blender279_modular PRIVATE ${IO_ALL_SRCS})
+
+target_compile_definitions(blender279_modular PRIVATE
+    WITH_IO
+    WITH_BLENLOADER
+    WITH_RNA
+    WITH_ALEMBIC
+    WITH_COLLADA
+)
