@@ -23,71 +23,13 @@
 #ifndef __BMESH_BEVEL_H__
 #define __BMESH_BEVEL_H__
 
-/** \file blender/bmesh/tools/bmesh_bevel.h
- *  \ingroup bmesh
- */
-
-typedef enum BevelType {
-    BEVEL_TYPE_OFFSET = 0,
-    BEVEL_TYPE_WIDTH = 1,
-    BEVEL_TYPE_DEPTH = 2,
-    BEVEL_TYPE_PERCENT = 3,
-} BevelType;
-
-typedef enum BevelSegments {
-    BEVEL_SEGMENTS_MAX = 100,
-} BevelSegments;
-
-typedef enum BevelProfileType {
-    BEVEL_PROFILE_SUPER_ELLIPSE = 0,
-    BEVEL_PROFILE_CUSTOM = 1,
-} BevelProfileType;
-
-typedef enum BevelVertexGroupMode {
-    BEVEL_VGROUP_NONE = 0,
-    BEVEL_VGROUP_WEIGHT = 1,
-    BEVEL_VGROUP_INVERT = 2,
-} BevelVertexGroupMode;
-
-typedef enum BevelHardenNormalsMode {
-    BEVEL_HARDEN_NORMALS_NONE = 0,
-    BEVEL_HARDEN_NORMALS_APPLY = 1,
-    BEVEL_HARDEN_NORMALS_BOTH = 2,
-} BevelHardenNormalsMode;
+struct MDeformVert;
 
 void BM_mesh_bevel(
-        BMesh *bm,
-        const int segments, const float width,
-        const BevelType bevel_type,
-        const float profile, const bool clamp_overlap,
-        const bool loop_slide, const bool mark,
-        const bool harden_normals,
-        const int vertex_group, const BevelVertexGroupMode vgroup_mode,
-        const float miter_outer, const float miter_inner,
-        const float spread, const float custom_profile[]);
-
-void BM_mesh_bevels_from_edges(
-        BMesh *bm,
-        const bool do_mark,
-        const BevelType bevel_type,
-        const int segments, const float width,
-        const float profile, const bool clamp_overlap,
-        const bool loop_slide,
-        const bool harden_normals,
-        const int vertex_group, const BevelVertexGroupMode vgroup_mode,
-        const float miter_outer, const float miter_inner,
-        const float spread, const float custom_profile[]);
-
-void BM_mesh_bevels_from_verts(
-        BMesh *bm,
-        const bool do_mark,
-        const BevelType bevel_type,
-        const int segments, const float width,
-        const float profile, const bool clamp_overlap,
-        const bool loop_slide,
-        const bool harden_normals,
-        const int vertex_group, const BevelVertexGroupMode vgroup_mode,
-        const float miter_outer, const float miter_inner,
-        const float spread, const float custom_profile[]);
+        BMesh *bm, const float offset, const int offset_type,
+        const float segments, const float profile,
+        const bool vertex_only, const bool use_weights, const bool limit_offset,
+        const struct MDeformVert *dvert, const int vertex_group, const int mat,
+        const bool loop_slide);
 
 #endif /* __BMESH_BEVEL_H__ */

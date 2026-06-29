@@ -54,6 +54,39 @@ typedef struct HookModifierData {
     float curfalloff;
 } HookModifierData;
 
+typedef struct ArrayModifierData {
+    ModifierData modifier;
+    struct Object *start_cap;
+    struct Object *end_cap;
+    struct Object *curve_ob;
+    struct Object *offset_ob;
+    float offset[3];
+    float scale[3];
+    float length;
+    float merge_dist;
+    int fit_type;
+    int offset_type;
+    int flags;
+    int count;
+} ArrayModifierData;
+
+enum {
+    MOD_ARR_FIXEDCOUNT = 0,
+    MOD_ARR_FITLENGTH  = 1,
+    MOD_ARR_FITCURVE   = 2,
+};
+
+enum {
+    MOD_ARR_OFF_CONST    = (1 << 0),
+    MOD_ARR_OFF_RELATIVE = (1 << 1),
+    MOD_ARR_OFF_OBJ      = (1 << 2),
+};
+
+enum {
+    MOD_ARR_MERGE      = (1 << 0),
+    MOD_ARR_MERGEFINAL = (1 << 1),
+};
+
 typedef struct BuildModifierData {
     ModifierData modifier;
     float start, length;
@@ -146,6 +179,41 @@ typedef struct ArmatureModifierData {
     float *prevCos;
     char defgrp_name[64];
 } ArmatureModifierData;
+
+typedef struct BevelModifierData {
+    ModifierData modifier;
+    float value;
+    int res;
+    short flags;
+    short val_flags;
+    short lim_flags;
+    short e_flags;
+    short mat;
+    short pad;
+    int pad2;
+    float profile;
+    float bevel_angle;
+    char defgrp_name[64];
+} BevelModifierData;
+
+enum {
+    MOD_BEVEL_VERT        = (1 << 1),
+    MOD_BEVEL_ANGLE       = (1 << 3),
+    MOD_BEVEL_WEIGHT      = (1 << 4),
+    MOD_BEVEL_VGROUP      = (1 << 5),
+    MOD_BEVEL_EMIN        = (1 << 7),
+    MOD_BEVEL_EMAX        = (1 << 8),
+    MOD_BEVEL_OVERLAP_OK  = (1 << 13),
+    MOD_BEVEL_EVEN_WIDTHS = (1 << 14),
+};
+
+enum {
+    MOD_BEVEL_AMT_OFFSET = 0,
+    MOD_BEVEL_AMT_WIDTH  = 1,
+    MOD_BEVEL_AMT_DEPTH  = 2,
+    MOD_BEVEL_AMT_PERCENT = 3,
+    MOD_BEVEL_AMT_ABSOLUTE = 4,
+};
 
 typedef struct CurveModifierData {
     ModifierData modifier;
