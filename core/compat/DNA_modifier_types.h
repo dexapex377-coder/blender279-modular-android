@@ -106,6 +106,35 @@ enum {
     MOD_BUILD_FLAG_REVERSE   = (1 << 1),
 };
 
+typedef struct DecimateModifierData {
+    ModifierData modifier;
+
+    float percent;
+    short iter;
+    char delimit;
+    char symmetry_axis;
+    float angle;
+
+    char defgrp_name[64];
+    float defgrp_factor;
+    short flag, mode;
+
+    int face_count;
+} DecimateModifierData;
+
+enum {
+    MOD_DECIM_FLAG_INVERT_VGROUP      = (1 << 0),
+    MOD_DECIM_FLAG_TRIANGULATE        = (1 << 1),
+    MOD_DECIM_FLAG_ALL_BOUNDARY_VERTS = (1 << 2),
+    MOD_DECIM_FLAG_SYMMETRY           = (1 << 3),
+};
+
+enum {
+    MOD_DECIM_MODE_COLLAPSE,
+    MOD_DECIM_MODE_UNSUBDIV,
+    MOD_DECIM_MODE_DISSOLVE,
+};
+
 /* Modifier types */
 typedef enum ModifierType {
 	eModifierType_None              = 0,
