@@ -69,7 +69,7 @@ bool                BM_edgeloop_calc_normal_aligned(
 void                BM_edgeloop_flip(BMesh *bm, struct BMEdgeLoopStore *el_store);
 void                BM_edgeloop_expand(
         BMesh *bm, struct BMEdgeLoopStore *el_store, int el_store_len,
-        bool split, struct GSet *split_edges);
+        bool split, GSet *split_edges);
 
 bool                BM_edgeloop_overlap_check(struct BMEdgeLoopStore *el_store_a, struct BMEdgeLoopStore *el_store_b);
 

@@ -259,7 +259,9 @@ void blur_interp_v3(float r[3], const float a[3], float t, int falloff);
 #define BLI_ASSERT_UNIT_V3(v) (void)0
 #endif
 #ifndef BLI_FOREACH_SPARSE_RANGE
-#define BLI_FOREACH_SPARSE_RANGE(idx, range) for (int idx = (range)[0]; idx < (range)[1]; idx++)
+/* Simplified sparse range: iterates tot times, i takes values 0..range-1 */
+#define BLI_FOREACH_SPARSE_RANGE(range, tot, i) \
+    for (int _sparse_idx_ = 0, i = 0; _sparse_idx_ < (tot); _sparse_idx_++, i = (int)((float)(range) * (float)_sparse_idx_ / (float)(tot)))
 #endif
 
 /* Map range */
