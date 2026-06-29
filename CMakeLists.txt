@@ -110,6 +110,9 @@ set(GPU_OPENGL_SRCS
 # Mesh module
 add_subdirectory(modules/mesh)
 
+# Depsgraph module
+add_subdirectory(modules/depsgraph)
+
 # Render plugin
 set(RENDER_SRCS
     plugins/render/BLE_render_module.c
