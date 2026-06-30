@@ -102,14 +102,14 @@ typedef struct MDisps {
 #define ME_HIDE         4
 #define ME_LOOSEEDGE    8
 #define ME_EDGERENDER   16
-#define ME_SHARP        1   /* same as ME_EDGEDRAW in 2.79 */
+#define ME_SHARP 1
 
 /* Mesh edit flags */
-#define ME_EDIT_MIRROR_X  (1 << 0)
+#define ME_EDIT_MIRROR_X (1 << 0)
 
 /* Mesh draw flags */
-#define ME_DRAWEIGHT      (1 << 0)
-#define ME_DRAW_STATVIS   (1 << 1)
+#define ME_DRAWEIGHT (1 << 0)
+#define ME_DRAW_STATVIS (1 << 1)
 
 /* MVert flags */
 #define ME_VERT_SEL   (1<<1)  /* vertex select flag */
