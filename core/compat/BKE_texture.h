@@ -1,6 +1,8 @@
 #ifndef __BKE_TEXTURE_H__
 #define __BKE_TEXTURE_H__
 
+#include "DNA_texture_types.h"
+
 struct Tex;
 struct Scene;
 struct TexResult;
