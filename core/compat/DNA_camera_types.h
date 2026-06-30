@@ -43,7 +43,9 @@ typedef struct CameraParams {
     float shiftx, shifty;
     float ofs[2];
     float winmat[4][4];
-    float viewplane[4];
+    struct {
+        float xmin, xmax, ymin, ymax;
+    } viewplane;
     float yco_scale;
     int is_ortho;
     float zoom;
