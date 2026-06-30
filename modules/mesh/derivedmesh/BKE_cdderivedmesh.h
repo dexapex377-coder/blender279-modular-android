@@ -36,6 +36,7 @@
 #define __BKE_CDDERIVEDMESH_H__
 
 #include "BKE_DerivedMesh.h"
+#include "BLI_kdopbvh.h"
 
 struct DerivedMesh;
 struct BMEditMesh;
