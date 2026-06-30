@@ -98,6 +98,46 @@ enum {
 #define ME_CDFLAG_EDGE_BWEIGHT (1<<4)
 #define ME_CDFLAG_EDGE_CREASE  (1<<5)
 
+/* tessellation uv face data */
+typedef struct MTFace {
+    float uv[4][2];
+    struct Image *tpage;
+    char flag, transp;
+    short mode, tile, unwrap;
+} MTFace;
+
+enum {
+    TF_SEL1   = (1 << 2),
+    TF_SEL2   = (1 << 3),
+    TF_SEL3   = (1 << 4),
+    TF_SEL4   = (1 << 5),
+};
+
+enum {
+    TF_DYNAMIC    = (1 << 0),
+    TF_ALPHASORT  = (1 << 1),
+    TF_TEX        = (1 << 2),
+    TF_SHAREDVERT = (1 << 3),
+    TF_LIGHT      = (1 << 4),
+    TF_CONVERTED  = (1 << 5),
+    TF_SHAREDCOL  = (1 << 6),
+    TF_BILLBOARD  = (1 << 8),
+    TF_TWOSIDE    = (1 << 9),
+    TF_INVISIBLE  = (1 << 10),
+    TF_OBCOL      = (1 << 11),
+    TF_BILLBOARD2 = (1 << 12),
+    TF_SHADOW     = (1 << 13),
+    TF_BMFONT     = (1 << 14),
+};
+
+enum {
+    TF_SOLID = 0,
+    TF_ADD   = (1 << 0),
+    TF_ALPHA = (1 << 1),
+    TF_CLIP  = (1 << 2),
+    TF_SUB   = 3,
+};
+
 #ifdef __cplusplus
 }
 #endif

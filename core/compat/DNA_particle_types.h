@@ -39,6 +39,11 @@ struct ParticleKey;
 struct HairKey;
 struct BoidParticle;
 
+typedef struct BoidData {
+    float health, acc[3];
+    short state_id, mode;
+} BoidData;
+
 typedef struct ParticleKey {
     float co[3];
     float vel[3];
@@ -280,6 +285,16 @@ typedef enum eParticleFlag {
     PART_VECTOR_ROT   = (1 << 8),
     PART_ABS_PARENT   = (1 << 9),
 } eParticleFlag;
+
+/* psys->alive values */
+#define PARS_DEAD   1
+#define PARS_UNBORN 2
+#define PARS_ALIVE  3
+#define PARS_DYING  4
+
+/* ParticleData->flag */
+#define PARS_UNEXIST  1
+#define PARS_NO_DISP  2
 
 #ifdef __cplusplus
 extern "C" {

@@ -78,6 +78,7 @@ enum {
 #define CD_MASK_MLOOPCOL ((CustomDataMask)1 << 35)
 #define CD_MASK_MPOLY ((CustomDataMask)1 << 4)
 #define CD_MASK_MLOOP ((CustomDataMask)1 << 3)
+#define CD_MASK_CUSTOMLOOPNORMAL ((CustomDataMask)1 << 41)
 
 /* Special index value for original indices */
 #define ORIGINDEX_NONE -1

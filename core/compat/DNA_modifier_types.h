@@ -456,11 +456,93 @@ enum {
 
 /* Triangulate methods - Quads */
 enum {
-	MOD_TRIANGULATE_QUAD_BEAUTY = 0,
-	MOD_TRIANGULATE_QUAD_FIXED,
-	MOD_TRIANGULATE_QUAD_ALTERNATE,
-	MOD_TRIANGULATE_QUAD_SHORTEDGE
+    MOD_TRIANGULATE_QUAD_BEAUTY = 0,
+    MOD_TRIANGULATE_QUAD_FIXED,
+    MOD_TRIANGULATE_QUAD_ALTERNATE,
+    MOD_TRIANGULATE_QUAD_SHORTEDGE
 };
+
+/* *************** DisplaceModifier *************** */
+typedef struct DisplaceModifierData {
+    ModifierData modifier;
+    struct Tex *texture;
+    struct Object *map_object;
+    char uvlayer_name[64];
+    int uvlayer_tmp;
+    int texmapping;
+    float strength;
+    int direction;
+    char defgrp_name[64];
+    float midlevel;
+    int space;
+} DisplaceModifierData;
+
+enum {
+    MOD_DISP_DIR_X       = 0,
+    MOD_DISP_DIR_Y       = 1,
+    MOD_DISP_DIR_Z       = 2,
+    MOD_DISP_DIR_NOR     = 3,
+    MOD_DISP_DIR_RGB_XYZ = 4,
+    MOD_DISP_DIR_CLNOR   = 5,
+};
+
+enum {
+    MOD_DISP_MAP_LOCAL  = 0,
+    MOD_DISP_MAP_GLOBAL = 1,
+    MOD_DISP_MAP_OBJECT = 2,
+    MOD_DISP_MAP_UV     = 3,
+};
+
+enum {
+    MOD_DISP_SPACE_LOCAL  = 0,
+    MOD_DISP_SPACE_GLOBAL = 1,
+};
+
+/* *************** EdgeSplitModifier *************** */
+typedef struct EdgeSplitModifierData {
+    ModifierData modifier;
+    float split_angle;
+    int flags;
+} EdgeSplitModifierData;
+
+enum {
+    MOD_EDGESPLIT_FROMANGLE  = (1 << 1),
+    MOD_EDGESPLIT_FROMFLAG   = (1 << 2),
+};
+
+/* *************** ExplodeModifier *************** */
+typedef enum {
+    eExplodeFlag_CalcFaces = (1 << 0),
+    eExplodeFlag_PaSize    = (1 << 1),
+    eExplodeFlag_EdgeCut   = (1 << 2),
+    eExplodeFlag_Unborn    = (1 << 3),
+    eExplodeFlag_Alive     = (1 << 4),
+    eExplodeFlag_Dead      = (1 << 5),
+} ExplodeModifierFlag;
+
+typedef struct ExplodeModifierData {
+    ModifierData modifier;
+    int *facepa;
+    short flag, vgroup;
+    float protect;
+    char uvname[64];
+} ExplodeModifierData;
+
+/* *************** ParticleSystemModifier *************** */
+typedef struct ParticleSystemModifierData {
+    ModifierData modifier;
+    struct ParticleSystem *psys;
+    struct DerivedMesh *dm_final;
+    struct DerivedMesh *dm_deformed;
+    int totdmvert, totdmedge, totdmface;
+    short flag, pad;
+} ParticleSystemModifierData;
+
+typedef enum {
+    eParticleSystemFlag_Pars         = (1 << 0),
+    eParticleSystemFlag_psys_updated = (1 << 1),
+    eParticleSystemFlag_file_loaded  = (1 << 2),
+} ParticleSystemModifierFlag;
 
 #ifdef __cplusplus
 }
