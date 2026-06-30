@@ -32,6 +32,9 @@ typedef struct bPoseChannel {
     struct bPoseChannel *child;
     ListBase iktree;
     ListBase siktree;
+    float pose_mat[4][4];
+    float pose_head[3];
+    float pose_tail[3];
     struct bMotionPath *mpath;
     struct Object *custom;
     struct bPoseChannel *custom_tx;

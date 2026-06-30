@@ -1,30 +1,12 @@
-#ifndef __BKE_COLORTOOLS_H__
-#define __BKE_COLORTOOLS_H__
+#ifndef __BKE_COLORMAPPING_H__
+#define __BKE_COLORMAPPING_H__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "DNA_color_types.h"
 
-typedef struct ColorManagedViewSettings {
-    int flag;
-    int look;
-    float exposure;
-    float gamma;
-    float rgb_curve;
-    void *curve_mapping;
-    int pad;
-} ColorManagedViewSettings;
-
-typedef struct ColorManagedDisplaySettings {
-    int display_device;
-} ColorManagedDisplaySettings;
-
-typedef struct ColorManagedColorspaceSettings {
-    char name[64];
-} ColorManagedColorspaceSettings;
-
-#ifdef __cplusplus
-}
-#endif
+struct CurveMapping *curvemapping_add(int tot, float minx, float miny, float maxx, float maxy);
+void curvemapping_free(struct CurveMapping *cumap);
+struct CurveMapping *curvemapping_copy(struct CurveMapping *cumap);
+float curvemapping_evaluateF(struct CurveMapping *cumap, int cur, float value);
+void curvemapping_initialize(struct CurveMapping *cumap);
 
 #endif
