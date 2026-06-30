@@ -51,6 +51,9 @@ typedef struct Object {
     struct BoundBox *bb;
     struct CurveCache *curve_cache;
     struct bPose *pose;
+    struct DerivedMesh *derivedFinal;
+    struct DerivedMesh *derivedDeform;
+    unsigned long long lastDataMask;
 } Object;
 
 /* Parent types */

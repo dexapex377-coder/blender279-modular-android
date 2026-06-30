@@ -709,6 +709,27 @@ enum {
     MOD_MDEF_DYNAMIC_BIND  = (1 << 1),
 };
 
+/* *************** MirrorModifier *************** */
+typedef struct MirrorModifierData {
+    ModifierData modifier;
+    short flag;
+    short pad;
+    float tolerance;
+    float uv_offset[2];
+    struct Object *mirror_ob;
+} MirrorModifierData;
+
+enum {
+    MOD_MIR_CLIPPING  = (1 << 0),
+    MOD_MIR_MIRROR_U  = (1 << 1),
+    MOD_MIR_MIRROR_V  = (1 << 2),
+    MOD_MIR_AXIS_X    = (1 << 3),
+    MOD_MIR_AXIS_Y    = (1 << 4),
+    MOD_MIR_AXIS_Z    = (1 << 5),
+    MOD_MIR_VGROUP    = (1 << 6),
+    MOD_MIR_NO_MERGE  = (1 << 7),
+};
+
 #ifdef __cplusplus
 }
 #endif
