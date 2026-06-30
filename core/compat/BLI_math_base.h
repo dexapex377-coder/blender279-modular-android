@@ -1,8 +1,42 @@
 #ifndef __BLI_MATH_BASE_H__
 #define __BLI_MATH_BASE_H__
 
-#include <cmath>
+#include <math.h>
+#include <float.h>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#ifndef M_PI_2
+#define M_PI_2 1.57079632679489661923
+#endif
+#ifndef M_PI_4
+#define M_PI_4 0.78539816339744830962
+#endif
+#ifndef M_SQRT2
+#define M_SQRT2 1.41421356237309504880
+#endif
+#ifndef M_SQRT1_2
+#define M_SQRT1_2 0.70710678118654752440
+#endif
+
+#define min_ff(a, b) ((a) < (b) ? (a) : (b))
+#define max_ff(a, b) ((a) > (b) ? (a) : (b))
+#define min_ii(a, b) ((a) < (b) ? (a) : (b))
+#define max_ii(a, b) ((a) > (b) ? (a) : (b))
+#define clamp_f(val, minv, maxv) (((val) < (minv)) ? (minv) : (((val) > (maxv)) ? (maxv) : (val)))
+#define clamp_i(val, minv, maxv) (((val) < (minv)) ? (minv) : (((val) > (maxv)) ? (maxv) : (val)))
+
+#define signum_i(val) ((val) > 0 ? 1 : ((val) < 0 ? -1 : 0))
+#define signum_f(val) ((val) > 0.0f ? 1.0f : ((val) < 0.0f ? -1.0f : 0.0f))
+
+#define square_f(a) ((a) * (a))
+#define lerp_f(a, b, t) ((a) + ((b) - (a)) * (t))
+
+#ifdef __cplusplus
+
 #include <algorithm>
+#include <cmath>
 
 namespace BLI {
 
@@ -19,5 +53,7 @@ inline float safe_sqrtf(float f) { return (f > 0.0f) ? std::sqrt(f) : 0.0f; }
 inline float safe_logf(float f, float base) { return (f > 0.0f) ? std::log(f) / std::log(base) : 0.0f; }
 
 }  // namespace BLI
+
+#endif  /* __cplusplus */
 
 #endif

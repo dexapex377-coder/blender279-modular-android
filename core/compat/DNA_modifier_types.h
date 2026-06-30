@@ -838,6 +838,29 @@ typedef struct OceanModifierData {
     int pad;
 } OceanModifierData;
 
+/* *************** RemeshModifier *************** */
+typedef enum RemeshModifierFlags {
+    MOD_REMESH_FLOOD_FILL     = 1,
+    MOD_REMESH_SMOOTH_SHADING = 2,
+} RemeshModifierFlags;
+
+typedef enum RemeshModifierMode {
+    MOD_REMESH_CENTROID       = 0,
+    MOD_REMESH_MASS_POINT     = 1,
+    MOD_REMESH_SHARP_FEATURES = 2,
+} RemeshModifierMode;
+
+typedef struct RemeshModifierData {
+    ModifierData modifier;
+    float threshold;
+    float scale;
+    float hermite_num;
+    char depth;
+    char flag;
+    char mode;
+    char pad;
+} RemeshModifierData;
+
 enum {
     MOD_OCEAN_GEOM_GENERATE = 0,
     MOD_OCEAN_GEOM_DISPLACE = 1,
