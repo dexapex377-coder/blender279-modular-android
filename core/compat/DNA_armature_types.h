@@ -65,6 +65,7 @@ typedef struct bArmature {
 } bArmature;
 
 enum {
+    ARM_DEF_VGROUP = (1 << 0),
     ARM_HAS_VIZ_DEPS = (1 << 5),
 };
 
