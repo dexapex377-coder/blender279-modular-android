@@ -827,6 +827,16 @@ enum {
     MOD_SHRINKWRAP_NEAREST_VERTEX  = 2,
 };
 
+/* Shrinkwrap->shrinkOpts */
+enum {
+    MOD_SHRINKWRAP_PROJECT_ALLOW_POS_DIR = (1 << 0),
+};
+
+/* Shrinkwrap->projAxis */
+enum {
+    MOD_SHRINKWRAP_PROJECT_OVER_NORMAL   = 0,
+};
+
 /* *************** ScrewModifier *************** */
 typedef struct ScrewModifierData {
     ModifierData modifier;

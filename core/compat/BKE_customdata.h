@@ -131,6 +131,9 @@ void CustomData_to_bmesh_block(CustomData *source, CustomData *dest, int src_ind
 
 typedef unsigned long long CustomDataMask;
 
+#define CD_TYPE_AS_MASK(cdtype) ((CustomDataMask)1 << (cdtype))
+#define CD_MASK_MVERT CD_TYPE_AS_MASK(CD_MVERT)
+
 #define CD_MASK_MESH (CD_TYPE_AS_MASK(CD_MVERT) | CD_TYPE_AS_MASK(CD_MEDGE) | CD_TYPE_AS_MASK(CD_MFACE) | CD_TYPE_AS_MASK(CD_MLOOP) | CD_TYPE_AS_MASK(CD_MPOLY))
 
 enum {
