@@ -258,7 +258,7 @@ int isect_point_plane_v3(const float p[3], const float plane[4]);
 void dist_ensure_v3_v3fl(float r[3], const float p[3], float d);
 void closest_to_line_v2(float r[2], const float p[2], const float l1[2], const float l2[2]);
 void closest_to_line_segment_v2(float r[2], const float p[2], const float l1[2], const float l2[2]);
-void closest_to_line_v3(float r[3], const float p[3], const float l1[3], const float l2[3]);
+float closest_to_line_v3(float r[3], const float p[3], const float l1[3], const float l2[3]);
 void closest_to_line_segment_v3(float r[3], const float p[3], const float l1[3], const float l2[3]);
 float closest_to_line_v2_fallback(float r[2], const float p[2], const float l1[2], const float l2[2]);
 float dist_to_line_segment_v2(const float p[2], const float l1[2], const float l2[2]);
