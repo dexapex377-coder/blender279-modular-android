@@ -371,6 +371,14 @@ typedef struct SurfaceModifierData {
     int cfra, numverts;
 } SurfaceModifierData;
 
+typedef struct TriangulateModifierData {
+    ModifierData modifier;
+    int flag;
+    int quad_method;
+    int ngon_method;
+    int pad;
+} TriangulateModifierData;
+
 /* *************** SolidifyModifier *************** */
 typedef struct SolidifyModifierData {
     ModifierData modifier;
