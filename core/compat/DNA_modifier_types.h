@@ -12,6 +12,7 @@ struct PointCache;
 struct Cloth;
 struct ClothHairData;
 struct ClothSolverResult;
+struct FluidsimSettings;
 
 typedef struct ModifierData {
     struct ModifierData *next, *prev;
@@ -536,6 +537,13 @@ typedef struct ExplodeModifierData {
     float protect;
     char uvname[64];
 } ExplodeModifierData;
+
+/* *************** FluidsimModifier *************** */
+typedef struct FluidsimModifierData {
+    ModifierData modifier;
+    struct FluidsimSettings *fss;
+    struct PointCache *point_cache;
+} FluidsimModifierData;
 
 /* *************** ParticleSystemModifier *************** */
 typedef struct ParticleSystemModifierData {

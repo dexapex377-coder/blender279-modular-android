@@ -57,6 +57,14 @@ typedef struct ToolSettings {
 #define SCE_SELECT_EDGE 2
 #define SCE_SELECT_FACE 4
 
+typedef struct Base {
+    struct Base *next, *prev;
+    unsigned int lay, selcol;
+    int flag;
+    short sx, sy;
+    struct Object *object;
+} Base;
+
 #ifdef __cplusplus
 }
 #endif
