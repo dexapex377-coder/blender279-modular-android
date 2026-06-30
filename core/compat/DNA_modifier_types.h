@@ -730,6 +730,25 @@ enum {
     MOD_MIR_NO_MERGE  = (1 << 7),
 };
 
+/* *************** MeshSeqCacheModifier *************** */
+typedef struct MeshSeqCacheModifierData {
+    ModifierData modifier;
+    struct CacheFile *cache_file;
+    struct CacheReader *reader;
+    char object_path[1024];
+    char read_flag;
+    char pad[7];
+} MeshSeqCacheModifierData;
+
+enum {
+    MOD_MESHSEQ_READ_VERT = (1 << 0),
+    MOD_MESHSEQ_READ_POLY = (1 << 1),
+    MOD_MESHSEQ_READ_UV   = (1 << 2),
+    MOD_MESHSEQ_READ_ALL  = MOD_MESHSEQ_READ_VERT | MOD_MESHSEQ_READ_POLY | MOD_MESHSEQ_READ_UV,
+};
+
+typedef struct SubsurfModifierData SubsurfModifierData;
+
 #ifdef __cplusplus
 }
 #endif
