@@ -737,6 +737,36 @@ enum {
     MOD_MIR_NO_MERGE  = (1 << 7),
 };
 
+/* *************** NormalEditModifier *************** */
+typedef struct NormalEditModifierData {
+    ModifierData modifier;
+    char defgrp_name[64];
+    struct Object *target;
+    short mode;
+    short flag;
+    short mix_mode;
+    char pad[2];
+    float mix_factor;
+    float mix_limit;
+    float offset[3];
+    float pad_f1;
+} NormalEditModifierData;
+
+enum {
+    MOD_NORMALEDIT_MODE_RADIAL        = 0,
+    MOD_NORMALEDIT_MODE_DIRECTIONAL   = 1,
+};
+enum {
+    MOD_NORMALEDIT_INVERT_VGROUP          = (1 << 0),
+    MOD_NORMALEDIT_USE_DIRECTION_PARALLEL = (1 << 1),
+};
+enum {
+    MOD_NORMALEDIT_MIX_COPY = 0,
+    MOD_NORMALEDIT_MIX_ADD  = 1,
+    MOD_NORMALEDIT_MIX_SUB  = 2,
+    MOD_NORMALEDIT_MIX_MUL  = 3,
+};
+
 /* *************** MeshSeqCacheModifier *************** */
 typedef struct MeshSeqCacheModifierData {
     ModifierData modifier;

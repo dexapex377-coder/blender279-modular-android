@@ -47,6 +47,7 @@ typedef struct Object {
     float obmat[4][4];
     float parentinv[4][4];
     float constinv[4][4];
+    float size[3];
     float trackflag, upflag;
     struct BoundBox *bb;
     struct CurveCache *curve_cache;
