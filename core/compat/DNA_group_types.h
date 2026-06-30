@@ -2,6 +2,7 @@
 #define __DNA_GROUP_TYPES_H__
 
 #include "DNA_listBase.h"
+#include "DNA_ID.h"
 
 #ifdef __cplusplus
 extern "C" {
