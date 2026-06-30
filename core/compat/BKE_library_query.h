@@ -10,6 +10,12 @@ extern "C" {
 
 enum {
     IDWALK_CB_NOP = 0,
+    IDWALK_CB_NEVER_NULL = (1 << 0),
+    IDWALK_CB_NEVER_SELF = (1 << 1),
+    IDWALK_CB_INDIRECT_USAGE = (1 << 2),
+    IDWALK_CB_PRIVATE = (1 << 3),
+    IDWALK_CB_LOOPBACK = (1 << 4),
+    IDWALK_CB_USER = (1 << 8),
 };
 
 void BKE_library_query_foreach_id(Main *bmain, void *userdata, bool (*callback)(void *userdata, ID *id));

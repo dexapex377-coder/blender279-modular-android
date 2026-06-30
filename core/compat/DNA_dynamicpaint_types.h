@@ -77,6 +77,21 @@ enum {
     MOD_DPAINT_OUT2               = 1 << 11,
 };
 
+/* effect flags */
+enum {
+    MOD_DPAINT_EFFECT_DO_SPREAD   = 1 << 0,
+    MOD_DPAINT_EFFECT_DO_DRIP     = 1 << 1,
+    MOD_DPAINT_EFFECT_DO_SHRINK   = 1 << 2,
+};
+
+/* init_color_type */
+enum {
+    MOD_DPAINT_INITIAL_NONE        = 0,
+    MOD_DPAINT_INITIAL_COLOR       = 1,
+    MOD_DPAINT_INITIAL_TEXTURE     = 2,
+    MOD_DPAINT_INITIAL_VERTEXCOLOR = 3,
+};
+
 typedef struct DynamicPaintCanvasSettings {
     struct DynamicPaintModifierData *pmd;
     struct DerivedMesh *dm;
