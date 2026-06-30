@@ -17,9 +17,9 @@ typedef struct BMEditMesh {
     ListBase selected;
     int selectmode;
     int shapenr;
-    struct DerivedMesh *derived_cage;
-    struct DerivedMesh *derived_final;
-    struct DerivedMesh *derived_deform;
+    struct DerivedMesh *derivedCage;
+    struct DerivedMesh *derivedFinal;
+    struct DerivedMesh *derivedDeform;
     void *py_handle;
 } BMEditMesh;
 

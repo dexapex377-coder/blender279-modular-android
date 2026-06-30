@@ -9,6 +9,7 @@ extern "C" {
 #endif
 
 enum {
+    IDWALK_NOP = 0,
     IDWALK_CB_NOP = 0,
     IDWALK_CB_NEVER_NULL = (1 << 0),
     IDWALK_CB_NEVER_SELF = (1 << 1),

@@ -47,6 +47,18 @@ typedef struct BVHTreeRayHit {
     float dist;
 } BVHTreeRayHit;
 
+typedef struct BVHTreeFromMesh {
+    struct BVHTree *tree;
+    void (*nearest_callback)(void *userdata, int index, const float co[3], struct BVHTreeNearest *nearest);
+    float epsilon;
+    int num_hits;
+    int spatest;
+    int treetype;
+    int numverts;
+    int numedges;
+    int numfaces;
+} BVHTreeFromMesh;
+
 enum {
     BVH_RAYCAST_WATERTIGHT = (1 << 0),
 };

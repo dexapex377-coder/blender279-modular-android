@@ -362,6 +362,15 @@ typedef struct SoftbodyModifierData {
     ModifierData modifier;
 } SoftbodyModifierData;
 
+typedef struct SurfaceModifierData {
+    ModifierData modifier;
+    struct MVert *x;
+    struct MVert *v;
+    struct DerivedMesh *dm;
+    struct BVHTreeFromMesh *bvhtree;
+    int cfra, numverts;
+} SurfaceModifierData;
+
 /* *************** SolidifyModifier *************** */
 typedef struct SolidifyModifierData {
     ModifierData modifier;
@@ -1045,6 +1054,44 @@ enum {
 enum {
     MOD_OCEAN_GENERATE_FOAM    = (1 << 0),
     MOD_OCEAN_GENERATE_NORMALS = (1 << 1),
+};
+
+/* *************** SurfaceDeform *************** */
+typedef struct SDefBind {
+    unsigned int *vert_inds;
+    unsigned int numverts;
+    int mode;
+    float *vert_weights;
+    float normal_dist;
+    float influence;
+} SDefBind;
+
+typedef struct SDefVert {
+    SDefBind *binds;
+    unsigned int numbinds;
+    char pad[4];
+} SDefVert;
+
+typedef struct SurfaceDeformModifierData {
+    ModifierData modifier;
+    struct Object *target;
+    SDefVert *verts;
+    float falloff;
+    unsigned int numverts, numpoly;
+    int flags;
+    float mat[4][4];
+} SurfaceDeformModifierData;
+
+enum {
+    MOD_SDEF_BIND = (1 << 0),
+    MOD_SDEF_USES_LOOPTRI = (1 << 1),
+    MOD_SDEF_HAS_CONCAVE = (1 << 2),
+};
+
+enum {
+    MOD_SDEF_MODE_LOOPTRI = 0,
+    MOD_SDEF_MODE_NGON = 1,
+    MOD_SDEF_MODE_CENTROID = 2,
 };
 
 #ifdef __cplusplus
