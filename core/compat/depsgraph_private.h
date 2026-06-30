@@ -3,6 +3,7 @@
 
 #include "BKE_main.h"
 #include "DNA_listBase.h"
+#include "BLI_kdopbvh.h"
 #include <stdbool.h>
 #include <stdint.h>
 
