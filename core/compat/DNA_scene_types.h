@@ -35,6 +35,8 @@ typedef struct Scene {
     struct MBox *mbox;
 } Scene;
 
+#define FPS (24.0)
+
 /* Scene flags */
 #define SCE_SELECT 1
 

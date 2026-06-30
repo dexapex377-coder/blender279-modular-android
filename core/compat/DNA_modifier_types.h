@@ -663,7 +663,8 @@ typedef struct MeshCacheModifierData {
     float frame_start;
     float frame_scale;
     float eval_factor;
-    float eval_start;
+    float eval_frame;
+    float eval_time;
     float eval_length;
     char filepath[1024];
     void *reader;

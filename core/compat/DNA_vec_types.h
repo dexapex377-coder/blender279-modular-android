@@ -5,6 +5,16 @@
 extern "C" {
 #endif
 
+typedef struct rcti {
+    int xmin, xmax;
+    int ymin, ymax;
+} rcti;
+
+typedef struct rctf {
+    float xmin, xmax;
+    float ymin, ymax;
+} rctf;
+
 typedef struct vec2i {
     int x, y;
 } vec2i;

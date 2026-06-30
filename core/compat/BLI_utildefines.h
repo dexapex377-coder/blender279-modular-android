@@ -22,6 +22,11 @@
 #define GET_INT_FROM_POINTER(ptr) ((int)(intptr_t)(ptr))
 #define SET_INT_IN_POINTER(val) ((void *)(intptr_t)(val))
 
+/* Buffer size for file paths */
+#define FILE_MAX 1024
+#define FILE_MAXDIR 768
+#define FILE_MAXFILE 256
+
 /* Unpack array elements */
 #define UNPACK2(a) ((a)[0]), ((a)[1])
 #define UNPACK3(a) ((a)[0]), ((a)[1]), ((a)[2])
