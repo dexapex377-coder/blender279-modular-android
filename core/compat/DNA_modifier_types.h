@@ -450,6 +450,10 @@ typedef struct UVProjectModifierData {
 
 #define MOD_UVPROJECT_MAXPROJECTORS 10
 
+enum {
+    MOD_UVPROJECT_OVERRIDEIMAGE = (1 << 0),
+};
+
 typedef struct CastModifierData {
     ModifierData modifier;
     struct Object *object;

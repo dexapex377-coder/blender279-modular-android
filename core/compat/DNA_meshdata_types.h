@@ -36,6 +36,20 @@ typedef struct MPoly {
     char flag, pad;
 } MPoly;
 
+typedef struct MTexPoly {
+    float uv[2];
+    int flag;
+    int pad;
+    int tpage;
+    char transp;
+    char mode;
+    short tile;
+    short blend;
+    float size[3];
+    float ofs[3];
+    char base_uv_name[64];
+} MTexPoly;
+
 typedef struct MFace {
     unsigned int v1, v2, v3, v4;
     short mat_nr;
