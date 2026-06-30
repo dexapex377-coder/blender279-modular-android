@@ -9,6 +9,7 @@ enum {
     DEG_OB_COMP_TRANSFORM = 0,
     DEG_OB_COMP_EVAL_POSE = 1,
     DEG_OB_COMP_GEOMETRY = 2,
+    DEG_OB_COMP_BONE = 3,
 };
 
 void DEG_add_build_relation(struct DepsRelation *relation);
