@@ -563,6 +563,27 @@ typedef struct CorrectiveSmoothModifierData {
     char pad2[4];
 } CorrectiveSmoothModifierData;
 
+/* *************** WireframeModifier *************** */
+typedef struct WireframeModifierData {
+    ModifierData modifier;
+    char defgrp_name[64];
+    float offset;
+    float offset_fac;
+    float offset_fac_vg;
+    float crease_weight;
+    short flag, mat_ofs;
+    short pad[2];
+} WireframeModifierData;
+
+enum {
+    MOD_WIREFRAME_INVERT_VGROUP = (1 << 0),
+    MOD_WIREFRAME_REPLACE       = (1 << 1),
+    MOD_WIREFRAME_BOUNDARY      = (1 << 2),
+    MOD_WIREFRAME_OFS_EVEN      = (1 << 3),
+    MOD_WIREFRAME_OFS_RELATIVE  = (1 << 4),
+    MOD_WIREFRAME_CREASE        = (1 << 5),
+};
+
 typedef struct DataTransferModifierData {
     ModifierData modifier;
 
