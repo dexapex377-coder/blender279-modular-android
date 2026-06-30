@@ -4,6 +4,9 @@
 #include "DNA_scene_types.h"
 #include "DNA_cloth_types.h"
 
+struct Image;
+struct AnimData;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -431,6 +434,21 @@ enum {
     eBooleanModifierBMeshFlag_BMesh_NoDissolve      = (1 << 1),
     eBooleanModifierBMeshFlag_BMesh_NoConnectRegions = (1 << 2),
 };
+
+/* *************** UVProjectModifier *************** */
+typedef struct UVProjectModifierData {
+    ModifierData modifier;
+    struct Object *projectors[10];
+    struct Image *image;
+    int flags;
+    int num_projectors;
+    float aspectx, aspecty;
+    float scalex, scaley;
+    char uvlayer_name[64];
+    int uvlayer_tmp, pad;
+} UVProjectModifierData;
+
+#define MOD_UVPROJECT_MAXPROJECTORS 10
 
 typedef struct CastModifierData {
     ModifierData modifier;
