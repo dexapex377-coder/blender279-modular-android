@@ -1,1 +1,1 @@
-/tmp/blender-modular/modules/mesh/bmesh/bmesh_queries_inline.h
+../../bmesh/bmesh_queries_inline.h

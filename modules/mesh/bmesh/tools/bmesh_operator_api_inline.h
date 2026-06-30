@@ -1,1 +1,1 @@
-/tmp/blender-modular/modules/mesh/bmesh/bmesh_operator_api_inline.h
+../../bmesh/bmesh_operator_api_inline.h

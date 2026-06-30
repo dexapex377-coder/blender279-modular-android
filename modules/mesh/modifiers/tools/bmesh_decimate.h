@@ -1,1 +1,1 @@
-/tmp/blender-modular/modules/mesh/bmesh/bmesh_decimate.h
+../../bmesh/bmesh_decimate.h

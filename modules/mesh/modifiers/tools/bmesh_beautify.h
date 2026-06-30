@@ -1,1 +1,1 @@
-/tmp/blender-modular/modules/mesh/bmesh/bmesh_beautify.h
+../../bmesh/bmesh_beautify.h

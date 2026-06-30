@@ -1,1 +1,1 @@
-/tmp/blender-modular/modules/mesh/bmesh/bmesh_path.h
+../../bmesh/bmesh_path.h
