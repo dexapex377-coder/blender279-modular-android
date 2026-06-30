@@ -12,6 +12,10 @@ struct FluidsimModifierData;
 struct Ipo;
 struct PointCache;
 
+typedef struct FluidVertexVelocity {
+    float vel[3];
+} FluidVertexVelocity;
+
 typedef struct FluidsimSettings {
     struct FluidsimModifierData *fmd;
     int threads;
@@ -45,6 +49,7 @@ typedef struct FluidsimSettings {
     float surfaceSmoothing;
     int surfaceSubdivs;
     int flag;
+    struct FluidVertexVelocity *meshVelocities;
     int pad3[4];
 } FluidsimSettings;
 
