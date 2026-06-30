@@ -338,6 +338,25 @@ enum {
 #define MOD_SMOKE_FLOW_SOURCE_MESH 1
 #define MOD_SMOKE_FLOW_TEXTURE_MAP_UV 1
 
+/* *************** SmoothModifier *************** */
+typedef struct SmoothModifierData {
+    ModifierData modifier;
+    float fac;
+    char defgrp_name[64];
+    short flag, repeat;
+} SmoothModifierData;
+
+enum {
+    MOD_SMOOTH_X = (1 << 1),
+    MOD_SMOOTH_Y = (1 << 2),
+    MOD_SMOOTH_Z = (1 << 3),
+};
+
+/* *************** SoftbodyModifier *************** */
+typedef struct SoftbodyModifierData {
+    ModifierData modifier;
+} SoftbodyModifierData;
+
 typedef struct BooleanModifierData {
     ModifierData modifier;
     struct Object *object;

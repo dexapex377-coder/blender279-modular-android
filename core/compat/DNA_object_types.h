@@ -38,6 +38,7 @@ typedef struct Object {
     int par1, par2, par3;
     struct Mesh *data;
     struct PartDeflect *pd;
+    struct SoftBody *soft;
     struct Material **mat;
     ListBase defbase;
     int totcol;

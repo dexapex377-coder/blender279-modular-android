@@ -29,6 +29,18 @@ typedef struct Scene {
     int frame_step;
     int pad;
     struct SceneRenderLayer *r;
+    int r_frs_sec;
+    int r_mode;
+    int r_size;
+    int r_xsch, r_ysch;
+    int r_xasp, r_yasp;
+    float r_blur_alpha;
+    int r_mblur_samples;
+    int r_mblur_shutter;
+    int r_scemode;
+    float r_framapto;
+    short r_imagesz;
+    short r_views_format;
     struct Object *obedit;
     struct ToolSettings *toolsettings;
     struct Editing *ed;
