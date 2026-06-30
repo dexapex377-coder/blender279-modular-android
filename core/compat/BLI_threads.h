@@ -7,6 +7,15 @@
 extern "C" {
 #endif
 
+typedef pthread_rwlock_t ThreadRWMutex;
+
+#define PTHREAD_RWLOCK_INITIALIZER PTHREAD_RWLOCK_INITIALIZER
+
+enum {
+    THREAD_LOCK_READ = 0,
+    THREAD_LOCK_WRITE = 1,
+};
+
 typedef struct SpinLock {
     pthread_spinlock_t lock;
 } SpinLock;

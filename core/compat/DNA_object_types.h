@@ -59,6 +59,11 @@ typedef struct Object {
     struct DerivedMesh *derivedFinal;
     struct DerivedMesh *derivedDeform;
     unsigned long long lastDataMask;
+    int shapenr;
+    struct Sculpt *sculpt;
+    void *actdef;
+    int lastNeedMapping;
+    unsigned long long customdata_mask;
 } Object;
 
 /* Parent types */

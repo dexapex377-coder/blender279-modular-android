@@ -67,7 +67,10 @@ typedef struct MLoopTri {
 } MLoopTri;
 
 typedef struct MVertTri {
-    unsigned int verts[3];
+    union {
+        unsigned int verts[3];
+        unsigned int tri[3];
+    };
 } MVertTri;
 
 typedef struct MVertSkin {
@@ -101,9 +104,17 @@ typedef struct MDisps {
 #define ME_EDGERENDER   16
 #define ME_SHARP        1   /* same as ME_EDGEDRAW in 2.79 */
 
+/* Mesh edit flags */
+#define ME_EDIT_MIRROR_X (1 << 0)
+
+/* Mesh draw flags */
+#define ME_DRAWEIGHT (1 << 0)
+#define ME_DRAW_STATVIS (1 << 1)
+
 /* MVert flags */
 #define ME_VERT_SEL   (1<<1)  /* vertex select flag */
 #define ME_VERT_TMP_TAG (1 << 2)
+#define ME_EDGE_TMP_TAG (1 << 2)
 #define ME_EDGE_TMP_TAG (1 << 2)
 #define ME_VERT_MERGED (1 << 6)
 #define ME_VERT_PBVH_UPDATE (1 << 7)

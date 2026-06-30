@@ -3,6 +3,7 @@
 
 #include "DNA_listBase.h"
 #include "DNA_ID.h"
+#include "DNA_sculpt_types.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -69,7 +70,27 @@ typedef struct ToolSettings {
     int proportional_size;
     int proportional_falloff;
     int proportional_connected;
+    int multipaint;
+    short weightuser;
+    short auto_normalize;
+    short statvis;
+    short pad2;
+    struct Sculpt *sculpt;
 } ToolSettings;
+
+typedef struct ColorBand {
+    int flag;
+    int tot;
+    float curval;
+    struct ColorBandElement *els;
+} ColorBand;
+
+typedef struct ColorBandElement {
+    float pos;
+    float r, g, b, a;
+} ColorBandElement;
+
+#define SCULPT_ONLY_DEFORM (1 << 0)
 
 /* Select modes */
 #define SCE_SELECT_VERTEX 1

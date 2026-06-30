@@ -30,6 +30,12 @@ typedef struct Material {
 
     /* preview */
     struct PreviewImage *preview;
+
+    /* paint slots */
+    struct MTex **texpaintslot;
+    int paint_active_slot;
+    short tot_slots;
+    short pad2;
 } Material;
 
 #ifdef __cplusplus

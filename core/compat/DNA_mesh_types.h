@@ -30,11 +30,22 @@ typedef struct Mesh {
     float smoothresh;
     ListBase fcache;
     int act_face;
+    float bb[3][2];
+    int editflag;
+    int drawflag;
 } Mesh;
 
 enum {
     ME_AUTOSMOOTH = (1 << 5),
 };
+
+enum {
+    ME_EDIT_MIRROR_X = (1 << 0),
+    ME_DRAWEIGHT = (1 << 0),
+    ME_DRAW_STATVIS = (1 << 1),
+};
+
+#define SCULPT_ONLY_DEFORM 1
 
 #ifdef __cplusplus
 }

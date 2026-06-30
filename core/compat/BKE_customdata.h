@@ -68,13 +68,24 @@ enum {
 
 /* BMesh mask includes all standard mesh layers */
 #define CD_MASK_BMESH ((1 << CD_NUM) - 1)
-
 #define CD_MASK_MDEFORMVERT ((CustomDataMask)1 << CD_MDEFORMVERT)
+
+#define CD_PREVIEW_MCOL 18
+#define CD_ORIGSPACE 19
+#define CD_TESSLOOPNORMAL 20
+#define CD_PREVIEW_MLOOPCOL 21
+#define CD_ORIGSPACE_MLOOP 22
+#define CD_NUMTYPES 40
+
 #define CD_MASK_MTFACE ((CD_MASK_BMESH) & (1 << CD_MTFACE))
 #define CD_MASK_MEDGE ((CD_MASK_BMESH) & (1 << CD_MEDGE))
 #define CD_MASK_ORIGINDEX (1 << CD_ORIGINDEX)
 #define CD_MASK_DERIVEDMESH (((CustomDataMask)1 << CD_NUM) - 1)
 #define CD_MASK_CLOTH_ORCO (1 << CD_CLOTH_ORCO)
+#define CD_MASK_MFACE ((CD_MASK_BMESH) & (1 << CD_MFACE))
+#define CD_MASK_ORCO ((CustomDataMask)1 << 32)
+#define CD_MASK_ORIGSPACE_MLOOP ((CustomDataMask)1 << CD_ORIGSPACE_MLOOP)
+#define CD_MASK_PREVIEW_MLOOPCOL ((CustomDataMask)1 << CD_PREVIEW_MLOOPCOL)
 #define CD_MASK_MLOOPUV ((CustomDataMask)1 << 28)
 #define CD_MASK_MTEXPOLY ((CustomDataMask)1 << 27)
 #define CD_MASK_MLOOPCOL ((CustomDataMask)1 << 35)
@@ -82,6 +93,10 @@ enum {
 #define CD_MASK_MLOOP ((CustomDataMask)1 << 3)
 #define CD_MASK_CUSTOMLOOPNORMAL ((CustomDataMask)1 << 41)
 #define CD_MASK_FACECORNERS ((CustomDataMask)0)
+
+#define CD_MASK_PREVIEW_MCOL ((CustomDataMask)1 << CD_PREVIEW_MCOL)
+#define CD_MASK_ORIGSPACE ((CustomDataMask)1 << CD_ORIGSPACE)
+#define CD_MASK_TESSLOOPNORMAL ((CustomDataMask)1 << CD_TESSLOOPNORMAL)
 
 /* Special index value for original indices */
 #define ORIGINDEX_NONE -1
