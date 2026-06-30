@@ -786,6 +786,39 @@ enum {
 
 typedef struct SubsurfModifierData SubsurfModifierData;
 
+/* *************** OceanModifier *************** */
+typedef struct OceanModifierData {
+    ModifierData modifier;
+    struct Ocean *ocean;
+    struct OceanCache *oceancache;
+    int resolution;
+    int spatial_size;
+    float wind_velocity;
+    float damp;
+    float smallest_wave;
+    float depth;
+    float wave_alignment;
+    float wave_direction;
+    float wave_scale;
+    float chop_amount;
+    float foam_coverage;
+    float time;
+    int bakestart;
+    int bakeend;
+    char cachepath[1024];
+    char foamlayername[64];
+    char cached;
+    char geometry_mode;
+    char flag;
+    char refresh;
+    short repeat_x;
+    short repeat_y;
+    int seed;
+    float size;
+    float foam_fade;
+    int pad;
+} OceanModifierData;
+
 #ifdef __cplusplus
 }
 #endif

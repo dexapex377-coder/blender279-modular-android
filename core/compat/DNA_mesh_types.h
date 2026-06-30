@@ -27,6 +27,7 @@ typedef struct Mesh {
     int *triangles;
     struct Key *key;
     struct EditMesh *edit_mesh;
+    float smoothresh;
     ListBase fcache;
     int act_face;
 } Mesh;
