@@ -1,0 +1,5 @@
+#ifndef __ALGORITHM_COMPAT__
+#define __ALGORITHM_COMPAT__
+
+
+#endif
