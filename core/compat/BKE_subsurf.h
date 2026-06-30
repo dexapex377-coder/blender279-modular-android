@@ -4,6 +4,8 @@
 struct SubsurfModifierData;
 struct Mesh;
 struct DerivedMesh;
+struct MPoly;
+struct GridPaintMask;
 
 void subsurf_calculate_derived_mesh(
     struct Scene *scene,
@@ -15,15 +17,15 @@ void subsurf_calculate_derived_mesh(
     bool *r_was_calculated);
 
 void subsurf_copy_grid_hidden(
-    struct DerivedMesh *result,
-    void *mpoly,
-    int totpoly,
-    void *grid_hidden);
+    struct DerivedMesh *dm,
+    const struct MPoly *mpoly,
+    struct MVert *mvert,
+    const struct MDisps *mdisps);
 
 void subsurf_copy_grid_paint_mask(
-    struct DerivedMesh *result,
-    void *mpoly,
-    int totpoly,
-    float *grid_paint_mask);
+    struct DerivedMesh *dm,
+    const struct MPoly *mpoly,
+    float *paint_mask,
+    const struct GridPaintMask *grid_paint_mask);
 
 #endif
