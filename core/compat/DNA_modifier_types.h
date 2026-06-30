@@ -298,9 +298,9 @@ enum {
 typedef struct LatticeModifierData {
     ModifierData modifier;
     struct Object *object;
-    struct Lattice *lattice;
-    short flag;
-    short pad;
+    char name[64];
+    float strength;
+    char pad[4];
 } LatticeModifierData;
 
 typedef struct ShapeKeyModifierData {
@@ -591,6 +591,22 @@ typedef struct LaplacianDeformModifierData {
 
 enum {
     MOD_LAPLACIANDEFORM_BIND = 1,
+};
+
+/* *************** LaplacianSmoothModifier *************** */
+typedef struct LaplacianSmoothModifierData {
+    ModifierData modifier;
+    float lambda, lambda_border, pad1;
+    char defgrp_name[64];
+    short flag, repeat;
+} LaplacianSmoothModifierData;
+
+enum {
+    MOD_LAPLACIANSMOOTH_X               = (1 << 1),
+    MOD_LAPLACIANSMOOTH_Y               = (1 << 2),
+    MOD_LAPLACIANSMOOTH_Z               = (1 << 3),
+    MOD_LAPLACIANSMOOTH_PRESERVE_VOLUME = (1 << 4),
+    MOD_LAPLACIANSMOOTH_NORMALIZED      = (1 << 5),
 };
 
 #ifdef __cplusplus
