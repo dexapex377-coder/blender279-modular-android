@@ -15,7 +15,8 @@ typedef struct MVert {
 
 typedef struct MEdge {
     unsigned int v1, v2;
-    char flag, bweight, crease;
+    char flag, bweight;
+    unsigned char crease;
 } MEdge;
 
 typedef struct MLoop {
@@ -89,6 +90,7 @@ typedef struct MDisps {
 /* MVert flags */
 #define ME_VERT_SEL   (1<<1)  /* vertex select flag */
 #define ME_VERT_TMP_TAG (1 << 2)
+#define ME_EDGE_TMP_TAG (1 << 2)
 #define ME_VERT_MERGED (1 << 6)
 #define ME_VERT_PBVH_UPDATE (1 << 7)
 

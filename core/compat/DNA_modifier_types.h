@@ -357,6 +357,32 @@ typedef struct SoftbodyModifierData {
     ModifierData modifier;
 } SoftbodyModifierData;
 
+/* *************** SolidifyModifier *************** */
+typedef struct SolidifyModifierData {
+    ModifierData modifier;
+    char defgrp_name[64];
+    float offset;
+    float offset_fac;
+    float offset_fac_vg;
+    float offset_clamp;
+    float pad;
+    float crease_inner;
+    float crease_outer;
+    float crease_rim;
+    int flag;
+    short mat_ofs;
+    short mat_ofs_rim;
+} SolidifyModifierData;
+
+enum {
+    MOD_SOLIDIFY_RIM            = (1 << 0),
+    MOD_SOLIDIFY_EVEN           = (1 << 1),
+    MOD_SOLIDIFY_NORMAL_CALC    = (1 << 2),
+    MOD_SOLIDIFY_VGROUP_INV     = (1 << 3),
+    MOD_SOLIDIFY_NOSHELL        = (1 << 4),
+    MOD_SOLIDIFY_FLIP           = (1 << 5),
+};
+
 typedef struct BooleanModifierData {
     ModifierData modifier;
     struct Object *object;
