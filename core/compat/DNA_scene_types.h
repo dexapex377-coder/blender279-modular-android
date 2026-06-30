@@ -12,6 +12,7 @@ typedef struct RenderData {
     int frs_sec;
     int mode;
     int size;
+    int cfra;
     int xsch, ysch;
     int xasp, yasp;
     float blur_alpha;
