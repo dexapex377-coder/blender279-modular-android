@@ -25,6 +25,15 @@ typedef struct ModifierData {
     char *error;
 } ModifierData;
 
+typedef struct MappingInfoModifierData {
+    ModifierData modifier;
+    struct Tex *texture;
+    struct Object *map_object;
+    char uvlayer_name[64];
+    int uvlayer_tmp;
+    int texmapping;
+} MappingInfoModifierData;
+
 typedef struct SubsurfModifierData {
     ModifierData modifier;
     short subdivision_types;

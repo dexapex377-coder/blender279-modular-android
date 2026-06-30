@@ -43,7 +43,8 @@ enum {
     CD_BWEIGHT = 29,
     CD_CREASE = 30,
     CD_MDEFORMVERT = 31,
-    CD_NUM = 32,
+    CD_CUSTOMLOOPNORMAL = 41,
+    CD_NUM = 42,
 };
 
 /* Flags */
