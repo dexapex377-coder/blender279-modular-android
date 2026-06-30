@@ -46,14 +46,22 @@ typedef struct SubsurfModifierData {
 
 typedef struct MultiresModifierData {
     ModifierData modifier;
-    short lvl, totlvl;
-    short flags;
-    short subdivision_type;
-    short quality;
-    short uv_smooth;
-    short boundary_smooth;
-    int simple;
+    char lvl, sculptlvl, renderlvl, totlvl;
+    char simple, flags, pad[2];
 } MultiresModifierData;
+
+typedef enum {
+    eMultiresModifierFlag_ControlEdges = (1 << 0),
+    eMultiresModifierFlag_PlainUv      = (1 << 1),
+} MultiresModifierFlag;
+
+typedef struct MultiresFlags {
+    int flag;
+} MultiresFlags;
+
+#define MULTIRES_ALLOC_PAINT_MASK 0
+#define MULTIRES_USE_RENDER_PARAMS 0
+#define MULTIRES_IGNORE_SIMPLIFY 0
 
 typedef struct HookModifierData {
     ModifierData modifier;
