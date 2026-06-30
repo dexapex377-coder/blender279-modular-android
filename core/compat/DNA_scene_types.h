@@ -8,6 +8,21 @@
 extern "C" {
 #endif
 
+typedef struct RenderData {
+    int frs_sec;
+    int mode;
+    int size;
+    int xsch, ysch;
+    int xasp, yasp;
+    float blur_alpha;
+    int mblur_samples;
+    int mblur_shutter;
+    int scemode;
+    float framapto;
+    short imagesz;
+    short views_format;
+} RenderData;
+
 typedef struct Scene {
     struct Scene *next, *prev;
     struct ID id;
@@ -28,19 +43,7 @@ typedef struct Scene {
     int flag;
     int frame_step;
     int pad;
-    struct SceneRenderLayer *r;
-    int r_frs_sec;
-    int r_mode;
-    int r_size;
-    int r_xsch, r_ysch;
-    int r_xasp, r_yasp;
-    float r_blur_alpha;
-    int r_mblur_samples;
-    int r_mblur_shutter;
-    int r_scemode;
-    float r_framapto;
-    short r_imagesz;
-    short r_views_format;
+    RenderData r;
     struct Object *obedit;
     struct ToolSettings *toolsettings;
     struct Editing *ed;

@@ -2,6 +2,7 @@
 #define __DNA_OBJECT_TYPES_H__
 
 #include "DNA_listBase.h"
+#include "DNA_softbody_types.h"
 #include "DNA_ID.h"
 #include "DNA_scene_types.h"
 #include "DNA_modifier_types.h"
