@@ -4,6 +4,8 @@
 #include "DNA_ID.h"
 #include "DNA_listBase.h"
 
+struct Image;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -31,6 +33,8 @@ typedef struct Tex {
     int xrepeat, yrepeat;
     char name[12];
     int stub;
+    struct Image *ima;
+    void *iuser;
 } Tex;
 
 #ifdef __cplusplus
