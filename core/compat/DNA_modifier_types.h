@@ -59,10 +59,6 @@ typedef struct MultiresFlags {
     int flag;
 } MultiresFlags;
 
-#define MULTIRES_ALLOC_PAINT_MASK 0
-#define MULTIRES_USE_RENDER_PARAMS 0
-#define MULTIRES_IGNORE_SIMPLIFY 0
-
 typedef struct HookModifierData {
     ModifierData modifier;
     struct Object *object;
