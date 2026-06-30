@@ -586,6 +586,25 @@ typedef enum {
     eParticleSystemFlag_file_loaded  = (1 << 2),
 } ParticleSystemModifierFlag;
 
+/* *************** ParticleInstanceModifier *************** */
+typedef struct ParticleInstanceModifierData {
+    ModifierData modifier;
+    struct Object *ob;
+    short psys, flag, axis, pad;
+    float position, random_position;
+} ParticleInstanceModifierData;
+
+typedef enum {
+    eParticleInstanceFlag_Parents   = (1 << 0),
+    eParticleInstanceFlag_Children  = (1 << 1),
+    eParticleInstanceFlag_Path      = (1 << 2),
+    eParticleInstanceFlag_Unborn    = (1 << 3),
+    eParticleInstanceFlag_Alive     = (1 << 4),
+    eParticleInstanceFlag_Dead      = (1 << 5),
+    eParticleInstanceFlag_KeepShape = (1 << 6),
+    eParticleInstanceFlag_UseSize   = (1 << 7),
+} ParticleInstanceModifierFlag;
+
 /* *************** LaplacianDeformModifier *************** */
 typedef struct LaplacianDeformModifierData {
     ModifierData modifier;

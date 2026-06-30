@@ -150,6 +150,8 @@ typedef struct SBVertex {
     float vec[4];
 } SBVertex;
 
+#define PTCACHE_BAKED 1
+
 #ifdef __cplusplus
 }
 #endif

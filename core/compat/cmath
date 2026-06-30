@@ -1,0 +1,6 @@
+#ifndef __CMATH_COMPAT__
+#define __CMATH_COMPAT__
+
+#include <math.h>
+
+#endif

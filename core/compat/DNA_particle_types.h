@@ -39,10 +39,7 @@ struct ParticleKey;
 struct HairKey;
 struct BoidParticle;
 
-typedef struct BoidData {
-    float health, acc[3];
-    short state_id, mode;
-} BoidData;
+struct BoidData;
 
 typedef struct ParticleKey {
     float co[3];
@@ -295,6 +292,12 @@ typedef enum eParticleFlag {
 /* ParticleData->flag */
 #define PARS_UNEXIST  1
 #define PARS_NO_DISP  2
+
+#define PSYS_KEYED          1024
+#define PSYS_HAIR_DONE      512
+#define PSYS_DELETE         256
+#define PSYS_HAIR_DYNAMICS  4
+#define PSYS_RECALC_RESET   (1 << 4)
 
 #ifdef __cplusplus
 extern "C" {

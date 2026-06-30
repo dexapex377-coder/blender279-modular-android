@@ -29,6 +29,7 @@ typedef struct Object {
     struct Object *parent;
     struct Object *track;
     ListBase constraints;
+    ListBase particlesystem;
     ListBase modifiers;
     short partype;
     short transflag;
@@ -81,6 +82,9 @@ enum {
     OB_WAVE = 21,
     OB_LATTICE = 22,
 };
+
+/* Object transflag values */
+#define OB_NO_PSYS_UPDATE (1 << 14)
 
 #ifdef __cplusplus
 }
