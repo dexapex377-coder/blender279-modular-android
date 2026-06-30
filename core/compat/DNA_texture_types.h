@@ -2,35 +2,35 @@
 #define __DNA_TEXTURE_TYPES_H__
 
 #include "DNA_ID.h"
+#include "DNA_listBase.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-struct AnimData;
-
 typedef struct Tex {
     ID id;
-    struct AnimData *adt;
-    float noisesize, turbul;
+    short type;
+    short flag;
+    int imaflag;
+    int extend;
+    int crop[4];
+    float size[3];
     float bright, contrast, saturation, rfac, gfac, bfac;
-    float filtersize, pad2;
-    float mg_H, mg_lacunarity, mg_octaves, mg_offset, mg_gain;
-    float dist_amount, ns_outscale;
-    float vn_w1, vn_w2, vn_w3, vn_w4, vn_mexp;
-    short vn_distm, vn_coltype;
-    short type, stype, flag, ima_flag, pad;
-    struct Image *ima;
-    struct ColorBand *coba;
-    struct EnvMap *env;
-    struct PreviewImage *preview;
-    struct MTex *mtex;
-    char use_nodes;
-    char pad2s[7];
-    int len;
-    int pad3;
-    struct bNodeTree *nodetree;
-    char name[64];
+    float filtersize;
+    float checkersize, checkerdist;
+    float negate;
+    float pad;
+    short which_output;
+    short color_space;
+    short env_map;
+    short ix, iy, iz;
+    short texfilter;
+    short afmax;
+    short xsize, ysize;
+    int xrepeat, yrepeat;
+    char name[12];
+    int stub;
 } Tex;
 
 #ifdef __cplusplus
