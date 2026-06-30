@@ -3,6 +3,7 @@
 
 #include "DNA_scene_types.h"
 #include "DNA_cloth_types.h"
+#include "DNA_image_types.h"
 
 struct Image;
 struct AnimData;
