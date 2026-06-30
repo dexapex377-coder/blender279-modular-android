@@ -782,6 +782,20 @@ enum {
     MOD_MESHCACHE_PLAY_EVAL = 1,
 };
 
+/* *************** UVWarpModifier *************** */
+typedef struct UVWarpModifierData {
+    ModifierData modifier;
+    char axis_u, axis_v;
+    char pad[6];
+    float center[2];
+    struct Object *object_src;
+    char bone_src[64];
+    struct Object *object_dst;
+    char bone_dst[64];
+    char vgroup_name[64];
+    char uvlayer_name[64];
+} UVWarpModifierData;
+
 typedef struct MeshCacheModifierData {
     ModifierData modifier;
     char flag;
