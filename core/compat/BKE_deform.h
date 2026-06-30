@@ -7,6 +7,8 @@
 extern "C" {
 #endif
 
+#define MAX_VGROUP_NAME 64
+
 typedef struct bDeformGroup {
     struct bDeformGroup *next, *prev;
     char name[64];

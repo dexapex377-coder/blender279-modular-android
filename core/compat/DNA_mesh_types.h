@@ -26,7 +26,7 @@ typedef struct Mesh {
     CustomData vdata, edata, fdata, ldata, pdata;
     int *triangles;
     struct Key *key;
-    struct EditMesh *edit_mesh;
+    struct BMEditMesh *edit_btmesh;
     float smoothresh;
     ListBase fcache;
     int act_face;

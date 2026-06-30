@@ -856,6 +856,118 @@ typedef enum {
     eWarp_Falloff_InvSquare = 8,
 } WarpModifierFalloff;
 
+/* *************** WeightVGEdit *************** */
+typedef struct WeightVGEditModifierData {
+    ModifierData modifier;
+    char defgrp_name[64];
+    short edit_flags;
+    short falloff_type;
+    float default_weight;
+    struct CurveMapping *cmap_curve;
+    float add_threshold, rem_threshold;
+    float mask_constant;
+    char mask_defgrp_name[64];
+    int mask_tex_use_channel;
+    struct Tex *mask_texture;
+    struct Object *mask_tex_map_obj;
+    int mask_tex_mapping;
+    char mask_tex_uvlayer_name[64];
+    int pad_i1;
+} WeightVGEditModifierData;
+
+enum {
+    MOD_WVG_EDIT_ADD2VG = (1 << 3),
+    MOD_WVG_EDIT_REMFVG = (1 << 4),
+};
+
+typedef struct WeightVGMixModifierData {
+    ModifierData modifier;
+    char defgrp_name_a[64];
+    char defgrp_name_b[64];
+    float default_weight_a;
+    float default_weight_b;
+    char mix_mode;
+    char mix_set;
+    char pad_c1[6];
+    float mask_constant;
+    char mask_defgrp_name[64];
+    int mask_tex_use_channel;
+    struct Tex *mask_texture;
+    struct Object *mask_tex_map_obj;
+    int mask_tex_mapping;
+    char mask_tex_uvlayer_name[64];
+    int pad_i1;
+} WeightVGMixModifierData;
+
+enum {
+    MOD_WVG_MIX_SET = 1,
+    MOD_WVG_MIX_ADD = 2,
+    MOD_WVG_MIX_SUB = 3,
+    MOD_WVG_MIX_MUL = 4,
+    MOD_WVG_MIX_DIV = 5,
+    MOD_WVG_MIX_DIF = 6,
+    MOD_WVG_MIX_AVG = 7,
+};
+
+enum {
+    MOD_WVG_SET_ALL = 1,
+    MOD_WVG_SET_A   = 2,
+    MOD_WVG_SET_B   = 3,
+    MOD_WVG_SET_OR  = 4,
+    MOD_WVG_SET_AND = 5,
+};
+
+typedef struct WeightVGProximityModifierData {
+    ModifierData modifier;
+    char defgrp_name[64];
+    int proximity_mode;
+    int proximity_flags;
+    struct Object *proximity_ob_target;
+    float mask_constant;
+    char mask_defgrp_name[64];
+    int mask_tex_use_channel;
+    struct Tex *mask_texture;
+    struct Object *mask_tex_map_obj;
+    int mask_tex_mapping;
+    char mask_tex_uvlayer_name[64];
+    float min_dist, max_dist;
+    short falloff_type;
+    short pad_s1;
+} WeightVGProximityModifierData;
+
+enum {
+    MOD_WVG_PROXIMITY_OBJECT    = 1,
+    MOD_WVG_PROXIMITY_GEOMETRY  = 2,
+};
+
+enum {
+    MOD_WVG_PROXIMITY_GEOM_VERTS = (1 << 0),
+    MOD_WVG_PROXIMITY_GEOM_EDGES = (1 << 1),
+    MOD_WVG_PROXIMITY_GEOM_FACES = (1 << 2),
+};
+
+enum {
+    MOD_WVG_MAPPING_NONE   = 0,
+    MOD_WVG_MAPPING_CURVE  = 1,
+    MOD_WVG_MAPPING_SHARP  = 2,
+    MOD_WVG_MAPPING_SMOOTH = 3,
+    MOD_WVG_MAPPING_ROOT   = 4,
+    MOD_WVG_MAPPING_SPHERE = 7,
+    MOD_WVG_MAPPING_RANDOM = 8,
+    MOD_WVG_MAPPING_STEP   = 9,
+};
+
+enum {
+    MOD_WVG_MASK_TEX_USE_INT   = 1,
+    MOD_WVG_MASK_TEX_USE_RED   = 2,
+    MOD_WVG_MASK_TEX_USE_GREEN = 3,
+    MOD_WVG_MASK_TEX_USE_BLUE  = 4,
+    MOD_WVG_MASK_TEX_USE_HUE   = 5,
+    MOD_WVG_MASK_TEX_USE_SAT   = 6,
+    MOD_WVG_MASK_TEX_USE_VAL   = 7,
+    MOD_WVG_MASK_TEX_USE_ALPHA = 8,
+};
+
 typedef struct MeshCacheModifierData {
     ModifierData modifier;
     char flag;
