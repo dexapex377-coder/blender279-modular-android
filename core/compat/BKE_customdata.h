@@ -35,7 +35,7 @@ enum {
     CD_MTFACE_LAYER = 21,
     CD_PAINT_MASK = 22,
     CD_GRID_PAINT_MASK = 23,
-    CD_MVERT_SKIN = 23,
+    CD_MVERT_SKIN = 36,
     CD_SHAPE_KEYINDEX = 24,
     CD_SHAPEKEY = 25,
     CD_EASY = 26,
@@ -133,6 +133,7 @@ typedef unsigned long long CustomDataMask;
 
 #define CD_TYPE_AS_MASK(cdtype) ((CustomDataMask)1 << (cdtype))
 #define CD_MASK_MVERT CD_TYPE_AS_MASK(CD_MVERT)
+#define CD_MASK_MVERT_SKIN ((CustomDataMask)1 << CD_MVERT_SKIN)
 
 #define CD_MASK_MESH (CD_TYPE_AS_MASK(CD_MVERT) | CD_TYPE_AS_MASK(CD_MEDGE) | CD_TYPE_AS_MASK(CD_MFACE) | CD_TYPE_AS_MASK(CD_MLOOP) | CD_TYPE_AS_MASK(CD_MPOLY))
 

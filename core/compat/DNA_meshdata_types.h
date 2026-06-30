@@ -52,8 +52,18 @@ typedef struct MLoopTri {
 } MLoopTri;
 
 typedef struct MVertTri {
-    unsigned int tri[3];
+    unsigned int verts[3];
 } MVertTri;
+
+typedef struct MVertSkin {
+    float radius[3];
+    int flag;
+} MVertSkin;
+
+enum {
+    MVERT_SKIN_ROOT = 1,
+    MVERT_SKIN_LOOSE = 2,
+};
 
 typedef struct MDisps {
     int totdisp;

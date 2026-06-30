@@ -862,6 +862,47 @@ enum {
     MOD_SCREW_MERGE          = (1 << 8),
 };
 
+/* *************** SimpleDeformModifier *************** */
+typedef struct SimpleDeformModifierData {
+    ModifierData modifier;
+    struct Object *origin;
+    char vgroup_name[64];
+    float factor;
+    float limit[2];
+    char mode;
+    char axis;
+    char flag;
+    char pad;
+} SimpleDeformModifierData;
+
+enum {
+    MOD_SIMPLEDEFORM_FLAG_INVERT_VGROUP = (1 << 0),
+};
+enum {
+    MOD_SIMPLEDEFORM_MODE_TWIST   = 1,
+    MOD_SIMPLEDEFORM_MODE_BEND    = 2,
+    MOD_SIMPLEDEFORM_MODE_TAPER   = 3,
+    MOD_SIMPLEDEFORM_MODE_STRETCH = 4,
+};
+
+/* *************** SkinModifier *************** */
+typedef struct SkinModifierData {
+    ModifierData modifier;
+    float branch_smoothing;
+    char flag;
+    char symmetry_axes;
+    char pad[2];
+} SkinModifierData;
+
+enum {
+    MOD_SKIN_SYMM_X = (1 << 0),
+    MOD_SKIN_SYMM_Y = (1 << 1),
+    MOD_SKIN_SYMM_Z = (1 << 2),
+};
+enum {
+    MOD_SKIN_SMOOTH_SHADING = 1,
+};
+
 /* *************** OceanModifier *************** */
 typedef struct OceanModifierData {
     ModifierData modifier;
