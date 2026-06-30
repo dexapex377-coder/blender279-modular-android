@@ -319,6 +319,25 @@ typedef struct ShapeKeyModifierData {
     short pad;
 } ShapeKeyModifierData;
 
+/* *************** SmokeModifier *************** */
+typedef struct SmokeModifierData {
+    ModifierData modifier;
+    struct SmokeDomainSettings *domain;
+    struct SmokeFlowSettings *flow;
+    struct SmokeCollSettings *coll;
+    float time;
+    int type;
+} SmokeModifierData;
+
+enum {
+    MOD_SMOKE_TYPE_DOMAIN = (1 << 0),
+    MOD_SMOKE_TYPE_FLOW   = (1 << 1),
+    MOD_SMOKE_TYPE_COLL   = (1 << 2),
+};
+
+#define MOD_SMOKE_FLOW_SOURCE_MESH 1
+#define MOD_SMOKE_FLOW_TEXTURE_MAP_UV 1
+
 typedef struct BooleanModifierData {
     ModifierData modifier;
     struct Object *object;
