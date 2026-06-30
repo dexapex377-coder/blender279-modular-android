@@ -29,6 +29,7 @@ typedef struct Scene {
     int frame_step;
     int pad;
     struct SceneRenderLayer *r;
+    struct Object *obedit;
     struct ToolSettings *toolsettings;
     struct Editing *ed;
     struct Curve *curve;

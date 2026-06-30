@@ -56,6 +56,8 @@ typedef struct DagForest {
 DagNode *dag_get_node(DagForest *forest, void *fob);
 void dag_add_relation(DagForest *forest, DagNode *fob1, DagNode *fob2, short rel, const char *name);
 
+#define DAG_RL_OB_OB        (1 << 1)
+#define DAG_RL_DATA_OB      (1 << 2)
 #define DAG_RL_OB_DATA      (1 << 3)
 #define DAG_RL_DATA_DATA    (1 << 5)
 

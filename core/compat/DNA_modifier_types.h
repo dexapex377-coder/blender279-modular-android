@@ -670,6 +670,45 @@ typedef struct MeshCacheModifierData {
     void *reader;
 } MeshCacheModifierData;
 
+/* *************** MeshDeformModifier *************** */
+typedef struct MDefInfluence {
+    int vertex;
+    float weight;
+} MDefInfluence;
+
+typedef struct MDefCell {
+    int offset;
+    int totinfluence;
+} MDefCell;
+
+typedef struct MeshDeformModifierData {
+    ModifierData modifier;
+    struct Object *object;
+    char defgrp_name[64];
+    short gridsize, flag, pad[2];
+    struct MDefInfluence *bindinfluences;
+    int *bindoffsets;
+    float *bindcagecos;
+    int totvert, totcagevert;
+    struct MDefCell *dyngrid;
+    struct MDefInfluence *dyninfluences;
+    int *dynverts;
+    int dyngridsize;
+    int totinfluence;
+    float dyncellmin[3];
+    float dyncellwidth;
+    float bindmat[4][4];
+    float *bindweights;
+    float *bindcos;
+    void (*bindfunc)(struct Scene *scene, struct MeshDeformModifierData *mmd, struct DerivedMesh *cagedm,
+                     float *vertexcos, int totvert, float cagemat[4][4]);
+} MeshDeformModifierData;
+
+enum {
+    MOD_MDEF_INVERT_VGROUP = (1 << 0),
+    MOD_MDEF_DYNAMIC_BIND  = (1 << 1),
+};
+
 #ifdef __cplusplus
 }
 #endif
