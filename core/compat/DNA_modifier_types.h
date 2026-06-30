@@ -35,13 +35,18 @@ typedef struct MappingInfoModifierData {
     int texmapping;
 } MappingInfoModifierData;
 
+typedef enum {
+    eSubsurfModifierFlag_Incremental  = (1 << 0),
+    eSubsurfModifierFlag_DebugIncr    = (1 << 1),
+    eSubsurfModifierFlag_ControlEdges = (1 << 2),
+    eSubsurfModifierFlag_SubsurfUv    = (1 << 3),
+} SubsurfModifierFlag;
+
 typedef struct SubsurfModifierData {
     ModifierData modifier;
-    short subdivision_types;
-    short subdivision_limits;
-    short levels, renderLevels;
-    short flags;
-    short quality;
+    short subdivType, levels, renderLevels, flags;
+    short use_opensubdiv, pad[3];
+    void *emCache, *mCache;
 } SubsurfModifierData;
 
 typedef struct MultiresModifierData {
@@ -866,8 +871,6 @@ enum {
     MOD_MESHSEQ_READ_UV   = (1 << 2),
     MOD_MESHSEQ_READ_ALL  = MOD_MESHSEQ_READ_VERT | MOD_MESHSEQ_READ_POLY | MOD_MESHSEQ_READ_UV,
 };
-
-typedef struct SubsurfModifierData SubsurfModifierData;
 
 /* *************** ShrinkwrapModifier *************** */
 typedef struct ShrinkwrapModifierData {

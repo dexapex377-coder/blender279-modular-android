@@ -92,6 +92,16 @@ enum {
 /* Object shapeflag values */
 #define OB_SHAPE_LOCK (1 << 0)
 
+/* Object mode flags */
+#define OB_MODE_OBJECT        0
+#define OB_MODE_EDIT          (1 << 0)
+#define OB_MODE_SCULPT        (1 << 1)
+#define OB_MODE_VERTEX_PAINT  (1 << 2)
+#define OB_MODE_WEIGHT_PAINT  (1 << 3)
+#define OB_MODE_TEXTURE_PAINT (1 << 4)
+#define OB_MODE_PARTICLE_EDIT (1 << 5)
+#define OB_MODE_POSE          (1 << 6)
+
 #ifdef __cplusplus
 }
 #endif

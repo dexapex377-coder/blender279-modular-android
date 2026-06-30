@@ -7,6 +7,15 @@ struct DerivedMesh;
 struct MPoly;
 struct GridPaintMask;
 
+typedef enum {
+    SUBSURF_USE_RENDER_PARAMS = 1,
+    SUBSURF_IS_FINAL_CALC = 2,
+    SUBSURF_FOR_EDIT_MODE = 4,
+    SUBSURF_IN_EDIT_MODE = 8,
+    SUBSURF_ALLOC_PAINT_MASK = 16,
+    SUBSURF_USE_GPU_BACKEND = 32,
+} SubsurfFlags;
+
 void subsurf_calculate_derived_mesh(
     struct Scene *scene,
     struct SubsurfModifierData *smd,
