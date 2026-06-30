@@ -1,6 +1,8 @@
 #ifndef __BKE_PARTICLE_H__
 #define __BKE_PARTICLE_H__
 
+#include "DNA_particle_types.h"
+
 struct ParticleSystemModifierData;
 struct ParticleSystem;
 struct ParticleData;

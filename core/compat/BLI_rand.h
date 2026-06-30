@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-struct RNG;
+typedef struct RNG RNG;
 
 struct RNG *BLI_rng_new(unsigned int seed);
 struct RNG *BLI_rng_new_srandom(unsigned int seed);

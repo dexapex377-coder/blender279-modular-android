@@ -20,6 +20,7 @@
 #define max_ff(a, b) ((a) > (b) ? (a) : (b))
 #define min_fff(a, b, c) min_ff(min_ff(a, b), c)
 #define GET_INT_FROM_POINTER(ptr) ((int)(intptr_t)(ptr))
+#define SET_INT_IN_POINTER(val) ((void *)(intptr_t)(val))
 
 /* Unpack array elements */
 #define UNPACK2(a) ((a)[0]), ((a)[1])

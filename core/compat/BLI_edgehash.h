@@ -14,6 +14,7 @@ EdgeHash *BLI_edgehash_new(const char *info);
 EdgeHash *BLI_edgehash_new_ex(const char *info, unsigned int nbr_reserve);
 void BLI_edgehash_free(EdgeHash *eh, void (*free_value)(void *));
 void BLI_edgehash_insert(EdgeHash *eh, unsigned int v1, unsigned int v2, void *val);
+void BLI_edgehash_reinsert(EdgeHash *eh, unsigned int v1, unsigned int v2, void *val);
 void *BLI_edgehash_lookup(EdgeHash *eh, unsigned int v1, unsigned int v2);
 void **BLI_edgehash_lookup_p(EdgeHash *eh, unsigned int v1, unsigned int v2);
 int BLI_edgehash_ensure_p(EdgeHash *eh, unsigned int v1, unsigned int v2, void ***r_val);
