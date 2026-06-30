@@ -249,6 +249,33 @@ typedef enum ModifierMode {
 	eModifierMode_DisableTemporary  = (1u << 31)
 } ModifierMode;
 
+/* *************** WaveModifier *************** */
+typedef struct WaveModifierData {
+    ModifierData modifier;
+    struct Tex *texture;
+    struct Object *map_object;
+    char uvlayer_name[64];
+    int uvlayer_tmp;
+    int texmapping;
+    struct Object *objectcenter;
+    char defgrp_name[64];
+    short flag, pad;
+    float startx, starty, height, width;
+    float narrow, speed, damp, falloff;
+    float timeoffs, lifetime;
+    float pad1;
+} WaveModifierData;
+
+enum {
+    MOD_WAVE_X      = (1 << 1),
+    MOD_WAVE_Y      = (1 << 2),
+    MOD_WAVE_CYCL   = (1 << 3),
+    MOD_WAVE_NORM   = (1 << 4),
+    MOD_WAVE_NORM_X = (1 << 5),
+    MOD_WAVE_NORM_Y = (1 << 6),
+    MOD_WAVE_NORM_Z = (1 << 7),
+};
+
 typedef struct ArmatureModifierData {
     ModifierData modifier;
 
@@ -795,6 +822,39 @@ typedef struct UVWarpModifierData {
     char vgroup_name[64];
     char uvlayer_name[64];
 } UVWarpModifierData;
+
+/* *************** WarpModifier *************** */
+typedef struct WarpModifierData {
+    ModifierData modifier;
+    struct Tex *texture;
+    struct Object *map_object;
+    char uvlayer_name[64];
+    int uvlayer_tmp;
+    int texmapping;
+    struct Object *object_from;
+    struct Object *object_to;
+    struct CurveMapping *curfalloff;
+    char defgrp_name[64];
+    float strength;
+    float falloff_radius;
+    char flag;
+    char falloff_type;
+    char pad[6];
+} WarpModifierData;
+
+#define MOD_WARP_VOLUME_PRESERVE 1
+
+typedef enum {
+    eWarp_Falloff_None   = 0,
+    eWarp_Falloff_Curve  = 1,
+    eWarp_Falloff_Sharp  = 2,
+    eWarp_Falloff_Smooth = 3,
+    eWarp_Falloff_Root   = 4,
+    eWarp_Falloff_Linear = 5,
+    eWarp_Falloff_Const  = 6,
+    eWarp_Falloff_Sphere = 7,
+    eWarp_Falloff_InvSquare = 8,
+} WarpModifierFalloff;
 
 typedef struct MeshCacheModifierData {
     ModifierData modifier;
