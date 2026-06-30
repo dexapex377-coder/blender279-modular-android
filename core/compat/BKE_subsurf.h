@@ -14,4 +14,16 @@ void subsurf_calculate_derived_mesh(
     int use_subsurf_uv,
     bool *r_was_calculated);
 
+void subsurf_copy_grid_hidden(
+    struct DerivedMesh *result,
+    void *mpoly,
+    int totpoly,
+    void *grid_hidden);
+
+void subsurf_copy_grid_paint_mask(
+    struct DerivedMesh *result,
+    void *mpoly,
+    int totpoly,
+    float *grid_paint_mask);
+
 #endif

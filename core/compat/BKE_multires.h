@@ -13,16 +13,15 @@ struct DerivedMesh;
 int multires_mdisp_corners(struct MDisps *mdisp);
 void multires_modifier_update_hidden(struct Mesh *me);
 void multires_set_tot_disp(struct Mesh *me);
+
+struct DerivedMesh *multires_make_derived_from_derived(
+    struct DerivedMesh *dm,
+    struct MultiresModifierData *mmd,
+    struct Object *ob,
+    MultiresFlags flags);
 int multires_reshape_totvert(const struct MultiresModifierData *mmd, int totvert);
 int multires_reshape_totpoly(const struct MultiresModifierData *mmd, int totpoly);
 int multires_reshape_totloop(const struct MultiresModifierData *mmd, int totloop);
-
-enum {
-    MULTIRES_USE_LOCAL_MMD = 1,
-    MULTIRES_USE_RENDER_PARAMS = 2,
-    MULTIRES_ALLOC_PAINT_MASK = 4,
-    MULTIRES_IGNORE_SIMPLIFY = 8,
-};
 
 void multiresModifier_do(
     struct Scene *scene,

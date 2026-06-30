@@ -55,8 +55,11 @@ typedef enum {
     eMultiresModifierFlag_PlainUv      = (1 << 1),
 } MultiresModifierFlag;
 
-typedef struct MultiresFlags {
-    int flag;
+typedef enum {
+    MULTIRES_USE_LOCAL_MMD = 1,
+    MULTIRES_USE_RENDER_PARAMS = 2,
+    MULTIRES_ALLOC_PAINT_MASK = 4,
+    MULTIRES_IGNORE_SIMPLIFY = 8,
 } MultiresFlags;
 
 typedef struct HookModifierData {
