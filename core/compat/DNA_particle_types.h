@@ -3,6 +3,7 @@
 
 #include "DNA_defs.h"
 #include "DNA_ID.h"
+#include "DNA_boid_types.h"
 
 struct AnimData;
 struct CurveMapping;
@@ -38,8 +39,6 @@ struct ParticleSystem;
 struct ParticleKey;
 struct HairKey;
 struct BoidParticle;
-
-struct BoidData;
 
 typedef struct ParticleKey {
     float co[3];
