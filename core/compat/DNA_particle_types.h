@@ -292,6 +292,8 @@ typedef enum eParticleFlag {
 #define PARS_UNEXIST  1
 #define PARS_NO_DISP  2
 
+#define PART_CHILD_PARTICLES  1
+
 #define PSYS_KEYED          1024
 #define PSYS_HAIR_DONE      512
 #define PSYS_DELETE         256
