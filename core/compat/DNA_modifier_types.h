@@ -624,6 +624,51 @@ enum {
     MOD_MASK_MODE_VGROUP = 1,
 };
 
+/* *************** MeshCacheModifier *************** */
+enum {
+    MOD_MESHCACHE_TYPE_MDD  = 1,
+    MOD_MESHCACHE_TYPE_PC2  = 2,
+};
+enum {
+    MOD_MESHCACHE_DEFORM_OVERWRITE = 0,
+    MOD_MESHCACHE_DEFORM_INTEGRATE = 1,
+};
+enum {
+    MOD_MESHCACHE_INTERP_NONE   = 0,
+    MOD_MESHCACHE_INTERP_LINEAR = 1,
+};
+enum {
+    MOD_MESHCACHE_TIME_FRAME   = 0,
+    MOD_MESHCACHE_TIME_SECONDS = 1,
+    MOD_MESHCACHE_TIME_FACTOR  = 2,
+};
+enum {
+    MOD_MESHCACHE_PLAY_CFEA = 0,
+    MOD_MESHCACHE_PLAY_EVAL = 1,
+};
+
+typedef struct MeshCacheModifierData {
+    ModifierData modifier;
+    char flag;
+    char type;
+    char time_mode;
+    char play_mode;
+    char forward_axis;
+    char up_axis;
+    char flip_axis;
+    char interp;
+    float factor;
+    char deform_mode;
+    char pad[7];
+    float frame_start;
+    float frame_scale;
+    float eval_factor;
+    float eval_start;
+    float eval_length;
+    char filepath[1024];
+    void *reader;
+} MeshCacheModifierData;
+
 #ifdef __cplusplus
 }
 #endif
