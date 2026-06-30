@@ -50,6 +50,7 @@ typedef struct Object {
     float constinv[4][4];
     float size[3];
     short trackflag, upflag;
+    char shapeflag;
     struct BoundBox *bb;
     struct CurveCache *curve_cache;
     struct bPose *pose;
@@ -85,6 +86,9 @@ enum {
 
 /* Object transflag values */
 #define OB_NO_PSYS_UPDATE (1 << 14)
+
+/* Object shapeflag values */
+#define OB_SHAPE_LOCK (1 << 0)
 
 #ifdef __cplusplus
 }

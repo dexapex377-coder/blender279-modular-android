@@ -805,6 +805,53 @@ enum {
 
 typedef struct SubsurfModifierData SubsurfModifierData;
 
+/* *************** ShrinkwrapModifier *************** */
+typedef struct ShrinkwrapModifierData {
+    ModifierData modifier;
+    struct Object *target;
+    struct Object *auxTarget;
+    char vgroup_name[64];
+    float keepDist;
+    short shrinkType;
+    char  shrinkOpts;
+    char  pad1;
+    float projLimit;
+    char  projAxis;
+    char subsurfLevels;
+    char pad[2];
+} ShrinkwrapModifierData;
+
+enum {
+    MOD_SHRINKWRAP_NEAREST_SURFACE = 0,
+    MOD_SHRINKWRAP_PROJECT         = 1,
+    MOD_SHRINKWRAP_NEAREST_VERTEX  = 2,
+};
+
+/* *************** ScrewModifier *************** */
+typedef struct ScrewModifierData {
+    ModifierData modifier;
+    struct Object *ob_axis;
+    unsigned int steps;
+    unsigned int render_steps;
+    unsigned int iter;
+    float screw_ofs;
+    float angle;
+    float merge_dist;
+    short flag;
+    char axis;
+    char pad[5];
+} ScrewModifierData;
+
+enum {
+    MOD_SCREW_NORMAL_FLIP    = (1 << 0),
+    MOD_SCREW_NORMAL_CALC    = (1 << 1),
+    MOD_SCREW_OBJECT_OFFSET  = (1 << 2),
+    MOD_SCREW_SMOOTH_SHADING = (1 << 5),
+    MOD_SCREW_UV_STRETCH_U   = (1 << 6),
+    MOD_SCREW_UV_STRETCH_V   = (1 << 7),
+    MOD_SCREW_MERGE          = (1 << 8),
+};
+
 /* *************** OceanModifier *************** */
 typedef struct OceanModifierData {
     ModifierData modifier;
