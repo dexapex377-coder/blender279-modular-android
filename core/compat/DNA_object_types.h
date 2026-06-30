@@ -12,6 +12,12 @@ extern "C" {
 
 struct PartDeflect;
 
+typedef struct bDeformGroup {
+    struct bDeformGroup *next, *prev;
+    char name[64];
+    char flag, pad[7];
+} bDeformGroup;
+
 typedef struct Object {
     struct Object *next, *prev;
     struct ID id;
@@ -38,7 +44,7 @@ typedef struct Object {
     struct Mesh *data;
     struct PartDeflect *pd;
     struct Material **mat;
-    struct bDeformGroup *defbase;
+    ListBase defbase;
     int totcol;
     int actcol;
     int colbits;

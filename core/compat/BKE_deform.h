@@ -22,7 +22,7 @@ typedef struct MDeformVert {
 } MDeformVert;
 
 typedef struct MDeformWeight {
-    int index;
+    int def_nr;
     float weight;
 } MDeformWeight;
 

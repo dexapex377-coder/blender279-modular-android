@@ -609,6 +609,21 @@ enum {
     MOD_LAPLACIANSMOOTH_NORMALIZED      = (1 << 5),
 };
 
+/* *************** MaskModifier *************** */
+typedef struct MaskModifierData {
+    ModifierData modifier;
+    struct Object *ob_arm;
+    char vgroup[64];
+    int mode;
+    int flag;
+} MaskModifierData;
+
+enum {
+    MOD_MASK_INV       = (1 << 0),
+    MOD_MASK_MODE_ARM  = 0,
+    MOD_MASK_MODE_VGROUP = 1,
+};
+
 #ifdef __cplusplus
 }
 #endif

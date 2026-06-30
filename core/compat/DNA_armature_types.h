@@ -8,24 +8,64 @@
 extern "C" {
 #endif
 
-typedef struct Armature {
-    ID id;
-    struct ListBase bonebase;
-    struct Pose *pose;
+struct AnimData;
+struct EditBone;
+
+typedef struct Bone {
+    struct Bone *next, *prev;
+    void *prop;
+    struct Bone *parent;
+    ListBase childbase;
+    char name[64];
+    float roll;
+    float head[3];
+    float tail[3];
+    float bone_mat[3][3];
     int flag;
-    int active_bone;
-    float ghost_size;
-    int edit_bone;
-    struct Bone *bones;
-} Armature;
+    float arm_head[3];
+    float arm_tail[3];
+    float arm_mat[4][4];
+    float arm_roll;
+    float dist, weight;
+    float xwidth, length, zwidth;
+    float ease1, ease2;
+    float rad_head, rad_tail;
+    float roll1, roll2;
+    float curveInX, curveInY;
+} Bone;
 
-typedef struct ArmatureModifierData ArmatureModifierData;
+#define BONE_SELECTED 1
 
-/* Armature modifier deformflag */
+typedef struct bArmature {
+    ID id;
+    struct AnimData *adt;
+    ListBase bonebase;
+    ListBase chainbase;
+    ListBase *edbo;
+    struct Bone *act_bone;
+    struct EditBone *act_edbone;
+    int flag;
+    int drawtype;
+    short layer;
+    short layer_protected;
+    int layer_used;
+    char ghostype;
+    char ghost_step;
+    char ghost_size;
+    char flag2;
+    char pathlength;
+    char ik_solver;
+    short ghost_bc;
+    short ghost_bc_threshold;
+    short pad2;
+    float ghost_frame;
+    float ghost_stepf;
+    short pathsteps;
+    short pad;
+} bArmature;
+
 enum {
-    ARM_DEF_VGROUP    = (1<<0),
-    ARM_DEF_MULTI     = (1<<1),
-    ARM_DEF_DVERT     = (1<<2),
+    ARM_HAS_VIZ_DEPS = (1 << 5),
 };
 
 #ifdef __cplusplus
