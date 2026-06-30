@@ -59,16 +59,34 @@ typedef struct HookModifierData {
     ModifierData modifier;
     struct Object *object;
     char subtarget[64];
-    short flag;
-    short falloff_type;
-    int totindex;
-    int *indexar;
-    float *weights;
+    char flag;
+    char falloff_type;
+    char pad[6];
+    float parentinv[4][4];
     float cent[3];
-    float falloff_rad;
+    float falloff;
+    struct CurveMapping *curfalloff;
+    int *indexar;
+    int totindex;
     float force;
-    float curfalloff;
+    char name[64];
 } HookModifierData;
+
+enum {
+    MOD_HOOK_UNIFORM_SPACE = (1 << 0),
+};
+
+enum {
+    eHook_Falloff_None   = 0,
+    eHook_Falloff_Curve  = 1,
+    eHook_Falloff_Sharp  = 2,
+    eHook_Falloff_Smooth = 3,
+    eHook_Falloff_Root   = 4,
+    eHook_Falloff_Linear = 5,
+    eHook_Falloff_Const  = 6,
+    eHook_Falloff_Sphere = 7,
+    eHook_Falloff_InvSquare = 8,
+};
 
 typedef struct ArrayModifierData {
     ModifierData modifier;
@@ -560,6 +578,20 @@ typedef enum {
     eParticleSystemFlag_psys_updated = (1 << 1),
     eParticleSystemFlag_file_loaded  = (1 << 2),
 } ParticleSystemModifierFlag;
+
+/* *************** LaplacianDeformModifier *************** */
+typedef struct LaplacianDeformModifierData {
+    ModifierData modifier;
+    char anchor_grp_name[64];
+    int total_verts, repeat;
+    float *vertexco;
+    void *cache_system;
+    short flag, pad[3];
+} LaplacianDeformModifierData;
+
+enum {
+    MOD_LAPLACIANDEFORM_BIND = 1,
+};
 
 #ifdef __cplusplus
 }

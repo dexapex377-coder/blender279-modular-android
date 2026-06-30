@@ -50,6 +50,7 @@ typedef struct Object {
     float trackflag, upflag;
     struct BoundBox *bb;
     struct CurveCache *curve_cache;
+    struct bPose *pose;
 } Object;
 
 /* Parent types */
